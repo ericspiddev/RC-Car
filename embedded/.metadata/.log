@@ -1,0 +1,609 @@
+!SESSION 2022-05-18 16:40:06.145 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.5
+java.vendor=Amazon.com Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.silabs.ss.platform.jetty.server 1 0 2022-05-18 16:40:07.789
+!MESSAGE ContentServer started at: 127.0.0.1, 55375
+
+!ENTRY com.silabs.ss.platform.rcp.core 1 0 2022-05-18 16:40:07.805
+!MESSAGE com.silabs.ss.tool.launcher.product found! Writing main studio shared file
+
+!ENTRY com.silabs.ss.support.browser.html 1 0 2022-05-18 16:40:12.866
+!MESSAGE Browser workarea set to: C:\RC-Car\embedded\.browser
+
+!ENTRY com.silabs.ss.platform.content.core 4 0 2022-05-18 16:40:19.058
+!MESSAGE Local timestamp file does not exist: C:\SiliconLabs\SimplicityStudio\v5\offline\common\Simplicity_Studio_Terms_of_Use_and_Privacy_Statement.timestamp
+
+!ENTRY com.silabs.ss.tool.installer.core 2 0 2022-05-18 16:40:24.593
+!MESSAGE Problem getting package resources: changelog
+
+!ENTRY com.silabs.ss.platform.content.core 4 0 2022-05-18 16:40:27.402
+!MESSAGE Local timestamp file does not exist: C:\SiliconLabs\SimplicityStudio\v5\offline\common\Simplicity_Studio_Terms_of_Use_and_Privacy_Statement.timestamp
+
+!ENTRY com.silabs.ss.platform.rcp.core 1 0 2022-05-18 16:41:50.685
+!MESSAGE selectedProfileId: null; defaultProfileId: GNU with spaces
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-05-18 16:42:04.553
+!MESSAGE Indexed 'bluetooth_soc_2' (120 sources, 346 headers) in 8.52 sec: 25,724 declarations; 64,839 references; 0 unresolved inclusions; 31 syntax errors; 5 unresolved names (0.0055%)
+
+!ENTRY com.silabs.ss.framework.ide.project.sls.core 4 0 2022-05-18 16:44:03.580
+!MESSAGE Failed to load project defined moduleuc.module.setup.apack_btConfig.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj in project bluetooth_soc_2
+!STACK 1
+org.eclipse.core.runtime.CoreException: failed to load file:/C:/RC-Car/embedded/bluetooth_soc_2/.pdm/uc.module.setup.apack_btConfig.com.silabs.ss.framework.project.toolchain.core.default%23com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj
+	at com.silabs.ss.platform.api.rcp.core.StatusReporter.newCoreException(StatusReporter.java:240)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:75)
+	at com.silabs.ss.framework.project.api.core.engine.ProjectModelModuleUtils.loadMProjectModel(ProjectModelModuleUtils.java:162)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.loadPDMs(BaseProjectHandle.java:111)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.checkLoadPdms(BaseProjectHandle.java:286)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.getProjectDefinedModules(BaseProjectHandle.java:268)
+	at com.silabs.ss.framework.ide.api.project.core.cpp.external.SlsExternalProjectImporter.createImportModel(SlsExternalProjectImporter.java:147)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingRawProjectModel(ProjectUpdateUtils.java:150)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:123)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:108)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProject(UcGenerator.java:378)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.lambda$10(UcGenerator.java:345)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:502)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:352)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:183)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.FileNotFoundException: C:\RC-Car\embedded\bluetooth_soc_2\.pdm\uc.module.setup.apack_btConfig.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createInputStream(FileURIHandlerImpl.java:99)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:73)
+	... 23 more
+!SUBENTRY 1 com.silabs.ss.framework.project.core.model 4 0 2022-05-18 16:44:03.580
+!MESSAGE failed to load file:/C:/RC-Car/embedded/bluetooth_soc_2/.pdm/uc.module.setup.apack_btConfig.com.silabs.ss.framework.project.toolchain.core.default%23com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj
+!STACK 0
+java.io.FileNotFoundException: C:\RC-Car\embedded\bluetooth_soc_2\.pdm\uc.module.setup.apack_btConfig.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createInputStream(FileURIHandlerImpl.java:99)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:73)
+	at com.silabs.ss.framework.project.api.core.engine.ProjectModelModuleUtils.loadMProjectModel(ProjectModelModuleUtils.java:162)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.loadPDMs(BaseProjectHandle.java:111)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.checkLoadPdms(BaseProjectHandle.java:286)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.getProjectDefinedModules(BaseProjectHandle.java:268)
+	at com.silabs.ss.framework.ide.api.project.core.cpp.external.SlsExternalProjectImporter.createImportModel(SlsExternalProjectImporter.java:147)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingRawProjectModel(ProjectUpdateUtils.java:150)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:123)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:108)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProject(UcGenerator.java:378)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.lambda$10(UcGenerator.java:345)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:502)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:352)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:183)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.silabs.ss.framework.ide.project.sls.core 4 0 2022-05-18 16:44:03.580
+!MESSAGE Failed to load project defined moduleuc.module.setup.componentSetup.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj in project bluetooth_soc_2
+!STACK 1
+org.eclipse.core.runtime.CoreException: failed to load file:/C:/RC-Car/embedded/bluetooth_soc_2/.pdm/uc.module.setup.componentSetup.com.silabs.ss.framework.project.toolchain.core.default%23com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj
+	at com.silabs.ss.platform.api.rcp.core.StatusReporter.newCoreException(StatusReporter.java:240)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:75)
+	at com.silabs.ss.framework.project.api.core.engine.ProjectModelModuleUtils.loadMProjectModel(ProjectModelModuleUtils.java:162)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.loadPDMs(BaseProjectHandle.java:111)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.checkLoadPdms(BaseProjectHandle.java:286)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.getProjectDefinedModules(BaseProjectHandle.java:268)
+	at com.silabs.ss.framework.ide.api.project.core.cpp.external.SlsExternalProjectImporter.createImportModel(SlsExternalProjectImporter.java:147)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingRawProjectModel(ProjectUpdateUtils.java:150)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:123)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:108)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProject(UcGenerator.java:378)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.lambda$10(UcGenerator.java:345)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:502)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:352)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:183)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.FileNotFoundException: C:\RC-Car\embedded\bluetooth_soc_2\.pdm\uc.module.setup.componentSetup.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createInputStream(FileURIHandlerImpl.java:99)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:73)
+	... 23 more
+!SUBENTRY 1 com.silabs.ss.framework.project.core.model 4 0 2022-05-18 16:44:03.580
+!MESSAGE failed to load file:/C:/RC-Car/embedded/bluetooth_soc_2/.pdm/uc.module.setup.componentSetup.com.silabs.ss.framework.project.toolchain.core.default%23com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj
+!STACK 0
+java.io.FileNotFoundException: C:\RC-Car\embedded\bluetooth_soc_2\.pdm\uc.module.setup.componentSetup.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createInputStream(FileURIHandlerImpl.java:99)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:73)
+	at com.silabs.ss.framework.project.api.core.engine.ProjectModelModuleUtils.loadMProjectModel(ProjectModelModuleUtils.java:162)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.loadPDMs(BaseProjectHandle.java:111)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.checkLoadPdms(BaseProjectHandle.java:286)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.getProjectDefinedModules(BaseProjectHandle.java:268)
+	at com.silabs.ss.framework.ide.api.project.core.cpp.external.SlsExternalProjectImporter.createImportModel(SlsExternalProjectImporter.java:147)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingRawProjectModel(ProjectUpdateUtils.java:150)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:123)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:108)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProject(UcGenerator.java:378)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.lambda$10(UcGenerator.java:345)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:502)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:352)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:183)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.silabs.ss.framework.ide.project.sls.core 4 0 2022-05-18 16:44:03.595
+!MESSAGE Failed to load project defined moduleuc.module.setup.defaultSettings.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj in project bluetooth_soc_2
+!STACK 1
+org.eclipse.core.runtime.CoreException: failed to load file:/C:/RC-Car/embedded/bluetooth_soc_2/.pdm/uc.module.setup.defaultSettings.com.silabs.ss.framework.project.toolchain.core.default%23com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj
+	at com.silabs.ss.platform.api.rcp.core.StatusReporter.newCoreException(StatusReporter.java:240)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:75)
+	at com.silabs.ss.framework.project.api.core.engine.ProjectModelModuleUtils.loadMProjectModel(ProjectModelModuleUtils.java:162)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.loadPDMs(BaseProjectHandle.java:111)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.checkLoadPdms(BaseProjectHandle.java:286)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.getProjectDefinedModules(BaseProjectHandle.java:268)
+	at com.silabs.ss.framework.ide.api.project.core.cpp.external.SlsExternalProjectImporter.createImportModel(SlsExternalProjectImporter.java:147)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingRawProjectModel(ProjectUpdateUtils.java:150)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:123)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:108)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProject(UcGenerator.java:378)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.lambda$10(UcGenerator.java:345)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:502)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:352)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:183)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.FileNotFoundException: C:\RC-Car\embedded\bluetooth_soc_2\.pdm\uc.module.setup.defaultSettings.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createInputStream(FileURIHandlerImpl.java:99)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:73)
+	... 23 more
+!SUBENTRY 1 com.silabs.ss.framework.project.core.model 4 0 2022-05-18 16:44:03.595
+!MESSAGE failed to load file:/C:/RC-Car/embedded/bluetooth_soc_2/.pdm/uc.module.setup.defaultSettings.com.silabs.ss.framework.project.toolchain.core.default%23com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj
+!STACK 0
+java.io.FileNotFoundException: C:\RC-Car\embedded\bluetooth_soc_2\.pdm\uc.module.setup.defaultSettings.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createInputStream(FileURIHandlerImpl.java:99)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:73)
+	at com.silabs.ss.framework.project.api.core.engine.ProjectModelModuleUtils.loadMProjectModel(ProjectModelModuleUtils.java:162)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.loadPDMs(BaseProjectHandle.java:111)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.checkLoadPdms(BaseProjectHandle.java:286)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.getProjectDefinedModules(BaseProjectHandle.java:268)
+	at com.silabs.ss.framework.ide.api.project.core.cpp.external.SlsExternalProjectImporter.createImportModel(SlsExternalProjectImporter.java:147)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingRawProjectModel(ProjectUpdateUtils.java:150)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:123)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:108)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProject(UcGenerator.java:378)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.lambda$10(UcGenerator.java:345)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:502)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:352)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:183)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.silabs.ss.framework.ide.project.sls.core 4 0 2022-05-18 16:44:03.595
+!MESSAGE Failed to load project defined moduleuc.module.setup.ucConfig.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj in project bluetooth_soc_2
+!STACK 1
+org.eclipse.core.runtime.CoreException: failed to load file:/C:/RC-Car/embedded/bluetooth_soc_2/.pdm/uc.module.setup.ucConfig.com.silabs.ss.framework.project.toolchain.core.default%23com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj
+	at com.silabs.ss.platform.api.rcp.core.StatusReporter.newCoreException(StatusReporter.java:240)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:75)
+	at com.silabs.ss.framework.project.api.core.engine.ProjectModelModuleUtils.loadMProjectModel(ProjectModelModuleUtils.java:162)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.loadPDMs(BaseProjectHandle.java:111)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.checkLoadPdms(BaseProjectHandle.java:286)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.getProjectDefinedModules(BaseProjectHandle.java:268)
+	at com.silabs.ss.framework.ide.api.project.core.cpp.external.SlsExternalProjectImporter.createImportModel(SlsExternalProjectImporter.java:147)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingRawProjectModel(ProjectUpdateUtils.java:150)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:123)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:108)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProject(UcGenerator.java:378)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.lambda$10(UcGenerator.java:345)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:502)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:352)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:183)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.FileNotFoundException: C:\RC-Car\embedded\bluetooth_soc_2\.pdm\uc.module.setup.ucConfig.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createInputStream(FileURIHandlerImpl.java:99)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:73)
+	... 23 more
+!SUBENTRY 1 com.silabs.ss.framework.project.core.model 4 0 2022-05-18 16:44:03.595
+!MESSAGE failed to load file:/C:/RC-Car/embedded/bluetooth_soc_2/.pdm/uc.module.setup.ucConfig.com.silabs.ss.framework.project.toolchain.core.default%23com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj
+!STACK 0
+java.io.FileNotFoundException: C:\RC-Car\embedded\bluetooth_soc_2\.pdm\uc.module.setup.ucConfig.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createInputStream(FileURIHandlerImpl.java:99)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:73)
+	at com.silabs.ss.framework.project.api.core.engine.ProjectModelModuleUtils.loadMProjectModel(ProjectModelModuleUtils.java:162)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.loadPDMs(BaseProjectHandle.java:111)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.checkLoadPdms(BaseProjectHandle.java:286)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.getProjectDefinedModules(BaseProjectHandle.java:268)
+	at com.silabs.ss.framework.ide.api.project.core.cpp.external.SlsExternalProjectImporter.createImportModel(SlsExternalProjectImporter.java:147)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingRawProjectModel(ProjectUpdateUtils.java:150)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:123)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:108)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProject(UcGenerator.java:378)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.lambda$10(UcGenerator.java:345)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:502)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:352)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:183)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.silabs.ss.framework.ide.project.sls.core 4 0 2022-05-18 16:44:03.595
+!MESSAGE Failed to load project defined moduleuc.module.setup.ucProject.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj in project bluetooth_soc_2
+!STACK 1
+org.eclipse.core.runtime.CoreException: failed to load file:/C:/RC-Car/embedded/bluetooth_soc_2/.pdm/uc.module.setup.ucProject.com.silabs.ss.framework.project.toolchain.core.default%23com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj
+	at com.silabs.ss.platform.api.rcp.core.StatusReporter.newCoreException(StatusReporter.java:240)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:75)
+	at com.silabs.ss.framework.project.api.core.engine.ProjectModelModuleUtils.loadMProjectModel(ProjectModelModuleUtils.java:162)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.loadPDMs(BaseProjectHandle.java:111)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.checkLoadPdms(BaseProjectHandle.java:286)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.getProjectDefinedModules(BaseProjectHandle.java:268)
+	at com.silabs.ss.framework.ide.api.project.core.cpp.external.SlsExternalProjectImporter.createImportModel(SlsExternalProjectImporter.java:147)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingRawProjectModel(ProjectUpdateUtils.java:150)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:123)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:108)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProject(UcGenerator.java:378)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.lambda$10(UcGenerator.java:345)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:502)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:352)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:183)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.FileNotFoundException: C:\RC-Car\embedded\bluetooth_soc_2\.pdm\uc.module.setup.ucProject.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createInputStream(FileURIHandlerImpl.java:99)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:73)
+	... 23 more
+!SUBENTRY 1 com.silabs.ss.framework.project.core.model 4 0 2022-05-18 16:44:03.595
+!MESSAGE failed to load file:/C:/RC-Car/embedded/bluetooth_soc_2/.pdm/uc.module.setup.ucProject.com.silabs.ss.framework.project.toolchain.core.default%23com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj
+!STACK 0
+java.io.FileNotFoundException: C:\RC-Car\embedded\bluetooth_soc_2\.pdm\uc.module.setup.ucProject.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createInputStream(FileURIHandlerImpl.java:99)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:73)
+	at com.silabs.ss.framework.project.api.core.engine.ProjectModelModuleUtils.loadMProjectModel(ProjectModelModuleUtils.java:162)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.loadPDMs(BaseProjectHandle.java:111)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.checkLoadPdms(BaseProjectHandle.java:286)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.getProjectDefinedModules(BaseProjectHandle.java:268)
+	at com.silabs.ss.framework.ide.api.project.core.cpp.external.SlsExternalProjectImporter.createImportModel(SlsExternalProjectImporter.java:147)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingRawProjectModel(ProjectUpdateUtils.java:150)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:123)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:108)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProject(UcGenerator.java:378)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.lambda$10(UcGenerator.java:345)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:502)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:352)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:183)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.silabs.ss.framework.ide.project.sls.core 4 0 2022-05-18 16:44:03.595
+!MESSAGE Failed to load project defined moduleuc.module.setup.ucTemplate.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj in project bluetooth_soc_2
+!STACK 1
+org.eclipse.core.runtime.CoreException: failed to load file:/C:/RC-Car/embedded/bluetooth_soc_2/.pdm/uc.module.setup.ucTemplate.com.silabs.ss.framework.project.toolchain.core.default%23com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj
+	at com.silabs.ss.platform.api.rcp.core.StatusReporter.newCoreException(StatusReporter.java:240)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:75)
+	at com.silabs.ss.framework.project.api.core.engine.ProjectModelModuleUtils.loadMProjectModel(ProjectModelModuleUtils.java:162)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.loadPDMs(BaseProjectHandle.java:111)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.checkLoadPdms(BaseProjectHandle.java:286)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.getProjectDefinedModules(BaseProjectHandle.java:268)
+	at com.silabs.ss.framework.ide.api.project.core.cpp.external.SlsExternalProjectImporter.createImportModel(SlsExternalProjectImporter.java:147)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingRawProjectModel(ProjectUpdateUtils.java:150)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:123)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:108)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProject(UcGenerator.java:378)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.lambda$10(UcGenerator.java:345)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:502)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:352)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:183)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.FileNotFoundException: C:\RC-Car\embedded\bluetooth_soc_2\.pdm\uc.module.setup.ucTemplate.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createInputStream(FileURIHandlerImpl.java:99)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:73)
+	... 23 more
+!SUBENTRY 1 com.silabs.ss.framework.project.core.model 4 0 2022-05-18 16:44:03.595
+!MESSAGE failed to load file:/C:/RC-Car/embedded/bluetooth_soc_2/.pdm/uc.module.setup.ucTemplate.com.silabs.ss.framework.project.toolchain.core.default%23com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj
+!STACK 0
+java.io.FileNotFoundException: C:\RC-Car\embedded\bluetooth_soc_2\.pdm\uc.module.setup.ucTemplate.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt.10.2.1.20201103.gcc.slsproj (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createInputStream(FileURIHandlerImpl.java:99)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at com.silabs.ss.framework.project.api.core.model.util.manual.ProjectModelLoading.loadProjectModel(ProjectModelLoading.java:73)
+	at com.silabs.ss.framework.project.api.core.engine.ProjectModelModuleUtils.loadMProjectModel(ProjectModelModuleUtils.java:162)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.loadPDMs(BaseProjectHandle.java:111)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.checkLoadPdms(BaseProjectHandle.java:286)
+	at com.silabs.ss.framework.ide.api.project.sls.core.BaseProjectHandle.getProjectDefinedModules(BaseProjectHandle.java:268)
+	at com.silabs.ss.framework.ide.api.project.core.cpp.external.SlsExternalProjectImporter.createImportModel(SlsExternalProjectImporter.java:147)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingRawProjectModel(ProjectUpdateUtils.java:150)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:123)
+	at com.silabs.ss.framework.project.api.core.utils.ProjectUpdateUtils.createExistingUserProjectModel(ProjectUpdateUtils.java:108)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProject(UcGenerator.java:378)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.lambda$10(UcGenerator.java:345)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:502)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:352)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:183)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.silabs.ss.platform.rcp.core 4 0 2022-05-18 16:44:03.595
+!MESSAGE 
+!STACK 0
+com.silabs.ss.framework.uc.core.api.exception.UcException: Generation: Projects failed bluetooth_soc_2
+
+Failed to generate bluetooth_soc_2 for Bluetooth Soc 2 [bluetooth_soc_2]
+Failed to find matching MConfiguration for IBuildConfiguration: GNU ARM v10.2.1 - Default [com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt:10.2.1.20201103] in bluetooth_soc_2
+
+
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:214)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.jobs 4 2 2022-05-18 16:44:03.595
+!MESSAGE An internal error occurred during: "bluetooth_soc project generation task".
+!STACK 0
+com.silabs.ss.framework.uc.core.api.exception.UcException: Generation: Projects failed bluetooth_soc_2
+
+Failed to generate bluetooth_soc_2 for Bluetooth Soc 2 [bluetooth_soc_2]
+Failed to find matching MConfiguration for IBuildConfiguration: GNU ARM v10.2.1 - Default [com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt:10.2.1.20201103] in bluetooth_soc_2
+
+
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:214)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.silabs.ss.platform.rcp.core 4 0 2022-05-18 16:44:03.611
+!MESSAGE 
+!STACK 0
+com.silabs.ss.framework.uc.core.api.exception.UcException: Generation: Projects failed bluetooth_soc_2
+
+Failed to generate bluetooth_soc_2 for Bluetooth Soc 2 [bluetooth_soc_2]
+Failed to find matching MConfiguration for IBuildConfiguration: GNU ARM v10.2.1 - Default [com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt:10.2.1.20201103] in bluetooth_soc_2
+
+
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:214)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.jobs 4 2 2022-05-18 16:44:03.611
+!MESSAGE An internal error occurred during: "bluetooth_soc project generation task".
+!STACK 0
+com.silabs.ss.framework.uc.core.api.exception.UcException: Generation: Projects failed bluetooth_soc_2
+
+Failed to generate bluetooth_soc_2 for Bluetooth Soc 2 [bluetooth_soc_2]
+Failed to find matching MConfiguration for IBuildConfiguration: GNU ARM v10.2.1 - Default [com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt:10.2.1.20201103] in bluetooth_soc_2
+
+
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.doGenerateProjects(UcGenerator.java:214)
+	at com.silabs.ss.framework.uc.internal.generation.UcGenerator.generateProjects(UcGenerator.java:154)
+	at com.silabs.ss.framework.uc.internal.generation.UcThreadingGenerator$UcProjectGenerationTask.run(UcThreadingGenerator.java:451)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 4 1 2022-05-18 16:44:04.427
+!MESSAGE Problems occurred refreshing resources
+!SUBENTRY 1 org.eclipse.core.resources 4 1 2022-05-18 16:44:04.427
+!MESSAGE Problem finding next change, code: 5
+
+!ENTRY org.eclipse.core.resources 4 1 2022-05-18 16:44:04.725
+!MESSAGE Problems occurred while refreshing local changes
+!SUBENTRY 1 org.eclipse.core.resources 4 1 2022-05-18 16:44:04.725
+!MESSAGE Problems occurred while refreshing local changes
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Errors occurred while refreshing resources with the local file system.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refreshResource(FileSystemResourceManager.java:980)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refresh(FileSystemResourceManager.java:960)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1557)
+	at org.eclipse.core.internal.refresh.RefreshJob.runInWorkspace(RefreshJob.java:166)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Contains: The project description file (.project) for 'bluetooth_soc_2' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+java.lang.Exception: The project description file (.project) for 'bluetooth_soc_2' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:907)
+	at org.eclipse.core.internal.resources.Project.updateDescription(Project.java:1346)
+	at org.eclipse.core.internal.resources.File.updateMetadataFiles(File.java:376)
+	at org.eclipse.core.internal.localstore.RefreshLocalVisitor.visit(RefreshLocalVisitor.java:291)
+	at org.eclipse.core.internal.localstore.UnifiedTree.accept(UnifiedTree.java:118)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refreshResource(FileSystemResourceManager.java:977)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refresh(FileSystemResourceManager.java:960)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1557)
+	at org.eclipse.core.internal.refresh.RefreshJob.runInWorkspace(RefreshJob.java:166)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 2 org.eclipse.core.resources 4 271 2022-05-18 16:44:04.725
+!MESSAGE Errors occurred while refreshing resources with the local file system.
+!SUBENTRY 3 org.eclipse.core.resources 4 567 2022-05-18 16:44:04.725
+!MESSAGE The project description file (.project) for 'bluetooth_soc_2' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!STACK 0
+java.lang.Exception: The project description file (.project) for 'bluetooth_soc_2' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:907)
+	at org.eclipse.core.internal.resources.Project.updateDescription(Project.java:1346)
+	at org.eclipse.core.internal.resources.File.updateMetadataFiles(File.java:376)
+	at org.eclipse.core.internal.localstore.RefreshLocalVisitor.visit(RefreshLocalVisitor.java:291)
+	at org.eclipse.core.internal.localstore.UnifiedTree.accept(UnifiedTree.java:118)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refreshResource(FileSystemResourceManager.java:977)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refresh(FileSystemResourceManager.java:960)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1557)
+	at org.eclipse.core.internal.refresh.RefreshJob.runInWorkspace(RefreshJob.java:166)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-05-18 16:46:59.305
+!MESSAGE Indexed 'bluetooth_soc' (120 sources, 346 headers) in 5.55 sec: 25,724 declarations; 64,839 references; 0 unresolved inclusions; 31 syntax errors; 5 unresolved names (0.0055%)
+
+!ENTRY com.silabs.ss.platform.rcp.core 1 0 2022-05-18 16:50:50.923
+!MESSAGE Deleted Shared Daemon File: C:\Users\elenb\.uc\cli\mainstudio.running
+
+!ENTRY com.silabs.ss.platform.rcp.core 1 0 2022-05-18 16:50:50.924
+!MESSAGE Deleted Shared Daemon Version File: C:\Users\elenb\.uc\cli\mainstudio.running.version
+!SESSION 2022-05-22 13:38:11.342 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.5
+java.vendor=Amazon.com Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.silabs.ss.platform.jetty.server 1 0 2022-05-22 13:38:16.157
+!MESSAGE ContentServer started at: 127.0.0.1, 55877
+
+!ENTRY com.silabs.ss.platform.rcp.core 1 0 2022-05-22 13:38:16.202
+!MESSAGE com.silabs.ss.tool.launcher.product found! Writing main studio shared file
+
+!ENTRY com.silabs.ss.platform.content.core 4 0 2022-05-22 13:38:34.687
+!MESSAGE Local timestamp file does not exist: C:\SiliconLabs\SimplicityStudio\v5\offline\common\Simplicity_Studio_Terms_of_Use_and_Privacy_Statement.timestamp
+
+!ENTRY com.silabs.ss.tool.installer.core 2 0 2022-05-22 13:38:41.215
+!MESSAGE Problem getting package resources: changelog
+
+!ENTRY com.silabs.ss.platform.content.core 4 0 2022-05-22 13:38:46.157
+!MESSAGE Local timestamp file does not exist: C:\SiliconLabs\SimplicityStudio\v5\offline\common\Simplicity_Studio_Terms_of_Use_and_Privacy_Statement.timestamp
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-05-22 13:38:50.992
+!MESSAGE Indexed 'bluetooth_soc' (120 sources, 346 headers) in 11.5 sec: 25,724 declarations; 64,839 references; 0 unresolved inclusions; 31 syntax errors; 5 unresolved names (0.0055%)
