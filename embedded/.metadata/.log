@@ -27,6 +27,7 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 !MESSAGE Local timestamp file does not exist: C:\SiliconLabs\SimplicityStudio\v5\offline\common\Simplicity_Studio_Terms_of_Use_and_Privacy_Statement.timestamp
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 !ENTRY org.eclipse.cdt.core 1 0 2022-05-22 13:38:50.992
 !MESSAGE Indexed 'bluetooth_soc' (120 sources, 346 headers) in 11.5 sec: 25,724 declarations; 64,839 references; 0 unresolved inclusions; 31 syntax errors; 5 unresolved names (0.0055%)
 <<<<<<< HEAD
@@ -542,6 +543,9 @@ Caused by: java.lang.Error: Channel is closed
 =======
 !ENTRY com.silabs.ss.support.hwtools.ui 1 0 2022-05-22 16:24:12.427
 >>>>>>> 107985b... fuck
+=======
+!ENTRY com.silabs.ss.support.hwtools.ui 1 0 2022-05-22 16:24:12.427
+>>>>>>> 83e3d14... Add simplicity studio project
 !MESSAGE Job status in detectpartjob websocket connect: {"isRunning":false,"resultIsOk":false,"message":"ERROR: Detect part job status is unknown."}
 
 !ENTRY com.silabs.ss.support.hwtools.ui 1 0 2022-05-22 16:24:12.493
@@ -685,4 +689,7 @@ java.lang.InterruptedException
 	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:207)
 	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:220)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+<<<<<<< HEAD
 >>>>>>> 8d881a8... Test for aaron
+=======
+>>>>>>> 83e3d14... Add simplicity studio project
