@@ -1,5 +1,6 @@
 package com.example.bluetooth;
 
+import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.text.Layout;
 import android.view.InflateException;
@@ -11,15 +12,18 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder> {
-    private List<String> deviceNames;
+    private List<BluetoothDevice> scannedDevices;
+    private ArrayList<String> deviceNames =  new ArrayList <>();
 
-    public DeviceAdapter( List<String> deviceNames)
+    public DeviceAdapter(List<BluetoothDevice> scannedDevices)
     {
-        this.deviceNames = deviceNames;
+        this.scannedDevices = scannedDevices;
+        extractDeviceNames();
     }
 
     @Override
@@ -56,6 +60,14 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
         public void onClick(View view)
         {
             Toast.makeText(view.getContext(), "Clicked element", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void extractDeviceNames()
+    {
+        for (BluetoothDevice device :scannedDevices)
+        {
+            deviceNames.add(device.getName());
         }
     }
 }
