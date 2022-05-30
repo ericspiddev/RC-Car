@@ -1,111 +1,103 @@
 package com.example.bluetooth;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Application;
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.lang.reflect.Array;
+import java.net.InetSocketAddress;
 import java.util.Set;
-import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
     private BluetoothDevice thunder;
+    private BluetoothAdapter adapter;
     private String ourDev = "Eric Spidle";
     private String hardwareaddr = "";
-    private Set<BluetoothDevice>  pairedDevs;
-    private UUID unique = new UUID(21,15);
+    private Set<BluetoothDevice> pairedDevs;
     private BluetoothSocket connection;
+    private String TAG = "Main";
+    private BluetoothLeService myBluetoothLeService;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-        registerReceiver(reciever, filter);
-        BluetoothAdapter bt = BluetoothAdapter.getDefaultAdapter();
-        if(bt == null) {
-            System.out.println("Bluetooth not supported");
-        }
-        else if(isDevicePaired(bt))
-        {
-
-        }
-        else
-        {
-            try{
-                bt.startDiscovery();
-            }
-            catch(SecurityException e)
-            {
-
-            }
-        }
     }
 
-    @Override
-    protected void onDestroy()
+    public void startBluetoothActivity(View view)
     {
-        super.onDestroy();
-        unregisterReceiver(reciever);
+
+        Intent mIntent = new Intent(this, BluetoothScanActivity.class);
+        startActivity(mIntent);
     }
 
-    private final BroadcastReceiver reciever = new BroadcastReceiver() {
+    public void sayHiToEric(View view)
+    {
+       snackBarAlert(view, "Hi Eric!");
+    }
+
+    private final ServiceConnection myServiceConnector = new ServiceConnection() { // object used to connect main activity to bluetoothLE Service
         @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if(BluetoothDevice.ACTION_FOUND.equals(action))
+        public void onServiceConnected(ComponentName name, IBinder service)
+        {
+            myBluetoothLeService = ((BluetoothLeService.LocalBinder)service).getService(); //cast service to BluetoothLeService and then get the service
+            if(!myBluetoothLeService.initialize()) // if we cannot init bluetooth
             {
-                BluetoothDevice dev = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                try{
-                    if(dev.getName() == ourDev){
-                        hardwareaddr = dev.getAddress();
-                        try{
-
-                            //connection = dev.createRfcommSocketToServiceRecord(unique);
-
-                        }
-                        catch(SecurityException e)
-                        {
-
-                        }
-
-                    }
-                }
-                catch (SecurityException e)
-                {
-
-                }
+                notifyBluetoothDisabled(); // display Toast to let user know bluetooth is not enabeld
+                finish(); // end activity
             }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            myBluetoothLeService = null; //remove reference to bluetooth service when we disconnect
         }
     };
-
-    private Boolean isDevicePaired(BluetoothAdapter bt)
+    private void snackBarAlert(View v, String message)
     {
-        try{
-            pairedDevs = bt.getBondedDevices();
-            if(pairedDevs.size() > 0)
-            {
-                for(BluetoothDevice dev : pairedDevs)
-                {
-                    String name= dev.getName();
-                    String addr = dev.getAddress();
-                    if(name == ourDev)
-                        return true;
-                }
-            }
-        }
-        catch(SecurityException e)
-        {
-            System.out.println("bluetooth not enabled for location");
-        }
-        return false;
+        Snackbar mySnackbar = Snackbar.make(v, message, BaseTransientBottomBar.LENGTH_LONG);
+        mySnackbar.show();
     }
 
+    private void notifyBluetoothDisabled()
+    {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.toast_layout_root));
+        TextView text = (TextView) layout.findViewById(R.id.text);
+        text.setText("Bluetooth disabled");
 
+        Toast notif = new Toast(getApplicationContext());
+        notif.setGravity(Gravity.BOTTOM, 0, 0);
+        notif.setDuration(Toast.LENGTH_LONG);
+        notif.setView(layout);
+        notif.show();
+    }
 }
