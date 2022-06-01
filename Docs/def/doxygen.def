@@ -1,0 +1,1638 @@
+AutoGen Definitions dummy;
+class = {
+  cp-id     = 'class_recycler_view_1_1_adapter';
+  cp-name   = 'RecyclerView::Adapter';
+  cp-ref     = {
+    ref-type = derived;
+    ref-id   = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-filename  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+  cp-fileline  = '23';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-inheritancegraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 1;
+        node-label = 'RecyclerView.Adapter';
+      }; /* node */
+      node = {
+        node-id    = 2;
+        node-label = 'com.example.bluetooth.DeviceAdapter< DeviceAdapter.ViewHolder >';
+        node-link = {
+          node-link-id = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter';
+        };
+        node-child = {
+          child-id = '1';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service';
+  cp-name   = 'com::example::bluetooth::BluetoothLeService';
+  cp-ref     = {
+    ref-type = base;
+    ref-id   = 'classandroid_1_1app_1_1_service';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1acb19b74562353e887763a47d6612e393';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+IBinder
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'onBind';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+Intent
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'intent';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+      sec-mem-desc-line = '40';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1ac64d733810cd34841e4168e99c4f1c36';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+boolean
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'initialize';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+      sec-mem-desc-line = '45';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1a9ccd3c4ae36744615e7395417be6ccea';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+boolean
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'connect';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+final String
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'hardwareAddress';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+      sec-mem-desc-line = '66';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1ac7e3b8f21a37b44fa05bcff2465a8b1c';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'connStatus';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= STATE_DISCONNECTED
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+      sec-mem-desc-line = '23';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1acd5a034f5fc6673454960a15be752fb8';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+BluetoothManager
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'manageBluetooth';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+      sec-mem-desc-line = '24';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1aecb72e5227bb07f1f3abee74d754fbf0';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+BluetoothAdapter
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'myAdapter';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+      sec-mem-desc-line = '25';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1a810009628ad1973db9662c805c74979d';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+BluetoothGatt
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'myGatt';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+      sec-mem-desc-line = '26';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1a24155ff9ac0628905482587d43869644';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+final IBinder
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'myBinder';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= new LocalBinder()
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+      sec-mem-desc-line = '37';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1a66857ece29fd3300cb20a4d8eceba2b5';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+final BluetoothGattCallback
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'gattCallback';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= new BluetoothGattCallback() {
+        @Override
+        public void onConnectionStateChange(BluetoothGatt gatt, int stat, int newState)
+        {
+            if(newState == BluetoothProfile.STATE_CONNECTED) 
+            {
+                connStatus = STATE_CONNECTED;
+
+                Log.i(TAG, "Connected to Gatt Server");
+                Log.i(TAG, "Attempting to start service discovery");
+                  
+            }
+            else if(newState == BluetoothProfile.STATE_DISCONNECTED)
+            {
+                Log.i(TAG, "Service disconnected from Gatt Sever");
+            }
+        }
+
+    }
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+      sec-mem-desc-line = '87';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-static-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1ae0411d3a24beeee173fe5738ac6efffc';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+static final int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'STATE_DISCONNECTED';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= BluetoothProfile.STATE_DISCONNECTED
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+      sec-mem-desc-line = '19';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1a067e3d61759497c377dbe1b603106168';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+static final int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'STATE_CONNECTED';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= BluetoothProfile.STATE_CONNECTED
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+      sec-mem-desc-line = '20';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1ac1691cf5331e7de3c9d450843f705824';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+static final String
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'TAG';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= "Bluetooth_Service"
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+      sec-mem-desc-line = '28';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+  cp-fileline  = '17';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-inheritancegraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'Service';
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'com.example.bluetooth.BluetoothLeService';
+        node-link = {
+          node-link-id = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+  cp-collaborationgraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'Service';
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'com.example.bluetooth.BluetoothLeService';
+        node-link = {
+          node-link-id = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity';
+  cp-name   = 'com::example::bluetooth::BluetoothScanActivity';
+  cp-ref     = {
+    ref-type = base;
+    ref-id   = 'classandroidx_1_1appcompat_1_1app_1_1_app_compat_activity';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity_1a958e0bf73d042435bb6f06f240d52f41';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'onCreate';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+Bundle
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'savedInstanceState';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+      sec-mem-desc-line = '45';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+onCreate is ran when the activity first begins to set up an initial state for the
+ activity.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param savedInstanceState -last known state of the application
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity_1a7703c9791eb6f159f24f91cf6d41cd5a';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'onResume';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+      sec-mem-desc-line = '70';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+This function is called after onStart and is what actually starts the scanning
+and creation of the recyclerView.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity_1ad8bb0459421ea7f84bcca4d53d6ec0fc';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'scanLeDevice';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+      sec-mem-desc-line = '84';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity_1a651f7682321ce54fe0bd564096dcc31b';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+List< String >
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'generateData';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+      sec-mem-desc-line = '115';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity_1a55ff6e1c2906928976c19248aa401f10';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+boolean
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'checkPermission';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+      sec-mem-desc-line = '124';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity_1a699a321784e1b04e0b24185077056a16';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+ArrayList< BluetoothDevice >
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'scannedDevices';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= new ArrayList<>()
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+      sec-mem-desc-line = '30';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity_1a1205722616a50d660adb660425bbf9c8';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+BluetoothAdapter
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'mAdapter';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+      sec-mem-desc-line = '32';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity_1a50110043075f3d64a356e2747e03508e';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+BluetoothLeScanner
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'scanner';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+      sec-mem-desc-line = '33';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity_1a2fe7c55bbbc56ffaefe06da65f10709f';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+boolean
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'scanning';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= false
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+      sec-mem-desc-line = '34';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity_1a85ee8d80a9c31e17a4dea240ed1bfe4c';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+Handler
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'handle';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+      sec-mem-desc-line = '35';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity_1aedfb0b1f709c9361b7dd318eccfbf807';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+final int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'SCAN_DURATION';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= 10000
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+      sec-mem-desc-line = '36';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity_1a9c0ff88b05beee7d253b68cd0a277a0f';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+ScanCallback
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'scanCallback';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=
+            new ScanCallback() {
+                @Override
+                public void onScanResult(int callbackType, ScanResult result)
+                {
+                    super.onScanResult(callbackType, result);
+                    scannedDevices.add(result.getDevice());
+                }
+            }
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+      sec-mem-desc-line = '105';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+  cp-fileline  = '29';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Activty that runs when the user clicks the bluetooth button This shows the user
+the list of nearby BluetoothLE devices in a scrollable list.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-inheritancegraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'AppCompatActivity';
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'com.example.bluetooth.BluetoothScanActivity';
+        node-link = {
+          node-link-id = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+  cp-collaborationgraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'AppCompatActivity';
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'com.example.bluetooth.BluetoothScanActivity';
+        node-link = {
+          node-link-id = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_scan_activity';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter';
+  cp-name   = 'com::example::bluetooth::DeviceAdapter';
+  cp-ref     = {
+    ref-type = base;
+    ref-id   = 'class_recycler_view_1_1_adapter';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter_1a749d0a3e2d8b9b4f9ea5bdb0b19aaa94';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'DeviceAdapter';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+List< String >
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'scannedDevices';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+      sec-mem-desc-line = '31';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+The contstructor inits a list of strings that hold the scanned devices.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param scannedDevices - list of available devices
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter_1a4271ea44041bd1ec6b3f7182ddc6dadf';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+DeviceAdapter.ViewHolder
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'onCreateViewHolder';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+ViewGroup
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'parent';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'viewType';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+      sec-mem-desc-line = '45';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+This Viewholder creates each indivdual row and is baesed on the overridden function
+ getItemCount to determine how many row items it creates.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param parent - the parent of the current viewgroup
+@param viewType - the type of view (Screen)
+@return - returns a new viewholder item that displays one single row
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter_1a9e9e7953d853cb88199a9707110d0838';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'onBindViewHolder';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+ViewHolder
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'holder';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+final int
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'position';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+      sec-mem-desc-line = '58';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Function that gets ran by the holder when we bind to the actual view.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+ this is usually done
+ when the activity is first created (on start or onresume)
+@param holder - the viewholder that will be modified (holding the rowitem)
+@param position - the position of the rowitem that will be modified
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter_1a14400f1527afde8ff80492fdc5bd1035';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getItemCount';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+      sec-mem-desc-line = '68';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Gets the number of rows to create based on the data.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@return - the number of items that will be listed
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter_1a4ad248d6cfcb31b07af424f0cd1274c0';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+List< String >
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'scannedDevices';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+      sec-mem-desc-line = '24';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter_1a7adef590623c3acbe83caabb480bf57e';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+ArrayList< String >
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'deviceNames';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  new ArrayList <>()
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+      sec-mem-desc-line = '25';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+  cp-fileline  = '23';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Class used as the adapter for the recycler view when the user starts
+the bluetooth activity.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+ This adapter implements the logic to display
+each device's name in a row.
+_EnD_oF_dEf_TeXt_;
+  cp-inheritancegraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'RecyclerView::Adapter< DeviceAdapter.ViewHolder >';
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'com.example.bluetooth.DeviceAdapter';
+        node-link = {
+          node-link-id = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+  cp-collaborationgraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'RecyclerView::Adapter< DeviceAdapter.ViewHolder >';
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'com.example.bluetooth.DeviceAdapter';
+        node-link = {
+          node-link-id = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1_1_local_binder';
+  cp-name   = 'com::example::bluetooth::BluetoothLeService::LocalBinder';
+  cp-ref     = {
+    ref-type = base;
+    ref-id   = 'classandroid_1_1os_1_1_binder';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-filename  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+  cp-fileline  = '31';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-inheritancegraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'Binder';
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'com.example.bluetooth.BluetoothLeService.LocalBinder';
+        node-link = {
+          node-link-id = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1_1_local_binder';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+  cp-collaborationgraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'Binder';
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'com.example.bluetooth.BluetoothLeService.LocalBinder';
+        node-link = {
+          node-link-id = 'classcom_1_1example_1_1bluetooth_1_1_bluetooth_le_service_1_1_local_binder';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'classcom_1_1example_1_1bluetooth_1_1_main_activity';
+  cp-name   = 'com::example::bluetooth::MainActivity';
+  cp-ref     = {
+    ref-type = base;
+    ref-id   = 'classandroidx_1_1appcompat_1_1app_1_1_app_compat_activity';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1a19d605e57ca25cdaac74a5f9b585b355';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'startBluetoothActivity';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '70';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Function called when we click the bluetooth button.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+ This starts the bluetooth
+activity and creates a new screen for the user to see.
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1a5d50a9895fcee27d36a2199eb9100892';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'sayHiToEric';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+View
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'view';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '81';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Testing method for making a toast notification with a button.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param view - current view to pass snackbar too
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'protected-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1a84372a3984b7bd336243b4e82d80eecf';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'onCreate';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+Bundle
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'savedInstanceState';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '60';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+onCreate is ran when the activity first begins to set up an initial state for the
+ activity.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param savedInstanceState -last known state of the application
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1a499585f03610212ff60c243ced7f2c17';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'snackBarAlert';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+View
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'v';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+String
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'message';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '103';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1a68a947675c66d26aba226d88c2675264';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'notifyBluetoothDisabled';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '109';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1a33e0063053dddb41f24604d47abfb1a7';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+BluetoothDevice
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'thunder';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '44';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Main activity that runs the app from the start and handles system
+processing between screens.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1ac3a90aa3bfa4bd5b8e09726e061a0984';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+BluetoothAdapter
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'adapter';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '45';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1a39f201d7ec4781ee4681df5dcc7db0ad';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+String
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'ourDev';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= "Eric Spidle"
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '46';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Variable for holding the adapter.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1a0220d20c634f1fb1aa0bb883fcbad857';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+String
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'hardwareaddr';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= ""
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '47';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1ad26bc5f8803272d5fa9c7204a21804de';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+Set< BluetoothDevice >
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'pairedDevs';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '48';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1a728d9dc2f84867bc5f1432e745da564a';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+BluetoothSocket
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'connection';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '49';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1a5f580aa42ee424ad389494257cd65018';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+String
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'TAG';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= "Main"
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '50';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1ad3d63967b787be81adf3541537c5959a';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+BluetoothLeService
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'myBluetoothLeService';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '51';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Tag to let other intents know what activity.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_main_activity_1ac8c1d6730329afffc1a50c82fb9fd009';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+final ServiceConnection
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'myServiceConnector';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= new ServiceConnection() { 
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service)
+        {
+            myBluetoothLeService = ((BluetoothLeService.LocalBinder)service).getService(); 
+            if(!myBluetoothLeService.initialize()) 
+            {
+                notifyBluetoothDisabled(); 
+                finish(); 
+            }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            myBluetoothLeService = null; 
+        }
+    }
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+      sec-mem-desc-line = '86';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+  cp-fileline  = '37';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-inheritancegraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'AppCompatActivity';
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'com.example.bluetooth.MainActivity';
+        node-link = {
+          node-link-id = 'classcom_1_1example_1_1bluetooth_1_1_main_activity';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+  cp-collaborationgraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'AppCompatActivity';
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'com.example.bluetooth.MainActivity';
+        node-link = {
+          node-link-id = 'classcom_1_1example_1_1bluetooth_1_1_main_activity';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'class_view_1_1_on_click_listener';
+  cp-name   = 'View::OnClickListener';
+  cp-ref     = {
+    ref-type = derived;
+    ref-id   = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter_1_1_view_holder';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-filename  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+  cp-fileline  = '78';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-inheritancegraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 1;
+        node-label = 'View.OnClickListener';
+      }; /* node */
+      node = {
+        node-id    = 2;
+        node-label = 'com.example.bluetooth.DeviceAdapter.ViewHolder';
+        node-child = {
+          child-id = '1';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter_1_1_view_holder';
+  cp-name   = 'com::example::bluetooth::DeviceAdapter::ViewHolder';
+  cp-ref     = {
+    ref-type = base;
+    ref-id   = 'class_recycler_view_1_1_view_holder';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-ref     = {
+    ref-type = base;
+    ref-id   = 'class_view_1_1_on_click_listener';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter_1_1_view_holder_1af616c7056385e21837686853dbd0afd6';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'ViewHolder';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+View
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'v';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+      sec-mem-desc-line = '82';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter_1_1_view_holder_1a5828a276ba96e4e914f8888f95c899e1';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'onClick';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+View
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'view';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+      sec-mem-desc-line = '94';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Function that overrides what happens when we click a row.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param view - the current view to listen for the click on
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter_1_1_view_holder_1a010f32efed84d4db2e3e2a6678bf1e60';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+TextView
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'textView';
+      sec-mem-desc-file = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+      sec-mem-desc-line = '80';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+  cp-fileline  = '78';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Viewholder class that will extend the recycler view to make a scrollable list of items
+it also uses the onClickListener interface to make custom actions for when we
+click each item.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-inheritancegraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'RecyclerView::ViewHolder';
+      }; /* node */
+      node = {
+        node-id    = 3;
+        node-label = 'View::OnClickListener';
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'com.example.bluetooth.DeviceAdapter.ViewHolder';
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+        node-child = {
+          child-id = '3';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+  cp-collaborationgraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'RecyclerView::ViewHolder';
+      }; /* node */
+      node = {
+        node-id    = 3;
+        node-label = 'View::OnClickListener';
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'com.example.bluetooth.DeviceAdapter.ViewHolder';
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+        node-child = {
+          child-id = '3';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'class_recycler_view_1_1_view_holder';
+  cp-name   = 'RecyclerView::ViewHolder';
+  cp-ref     = {
+    ref-type = derived;
+    ref-id   = 'classcom_1_1example_1_1bluetooth_1_1_device_adapter_1_1_view_holder';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-filename  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+  cp-fileline  = '78';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-inheritancegraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 1;
+        node-label = 'RecyclerView.ViewHolder';
+      }; /* node */
+      node = {
+        node-id    = 2;
+        node-label = 'com.example.bluetooth.DeviceAdapter.ViewHolder';
+        node-child = {
+          child-id = '1';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+file = {
+  file-id   = '_bluetooth_le_service_8java';
+  file-name = 'BluetoothLeService.java';
+  file-full-name  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = '_bluetooth_scan_activity_8java';
+  file-name = 'BluetoothScanActivity.java';
+  file-full-name  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothScanActivity.java';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = '_device_adapter_8java';
+  file-name = 'DeviceAdapter.java';
+  file-full-name  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/DeviceAdapter.java';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = '_main_activity_8java';
+  file-name = 'MainActivity.java';
+  file-full-name  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/MainActivity.java';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+  namespace = {
+    ns-id   = 'namespacecom';
+    ns-name = 'com';
+  ns-filename  = '[generated]';
+  ns-fileline  = '1';
+  ns-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  ns-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  };
+  namespace = {
+    ns-id   = 'namespacecom_1_1example';
+    ns-name = 'com::example';
+  ns-filename  = '[generated]';
+  ns-fileline  = '1';
+  ns-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  ns-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  };
+  namespace = {
+    ns-id   = 'namespacecom_1_1example_1_1bluetooth';
+    ns-name = 'com::example::bluetooth';
+  ns-filename  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+  ns-fileline  = '1';
+  ns-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  ns-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  };
+  namespace = {
+    ns-id   = 'namespacejava_1_1lang';
+    ns-name = 'java::lang';
+  ns-filename  = 'C:/Users/zacly/OneDrive/Documents/CIS350/RC-Car/app/src/main/java/com/example/bluetooth/BluetoothLeService.java';
+  ns-fileline  = '1';
+  ns-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  ns-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  };
+  namespace = {
+    ns-id   = 'namespace_recycler_view';
+    ns-name = 'RecyclerView';
+  ns-filename  = '[generated]';
+  ns-fileline  = '1';
+  ns-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  ns-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  };
+  namespace = {
+    ns-id   = 'namespace_view';
+    ns-name = 'View';
+  ns-filename  = '[generated]';
+  ns-fileline  = '1';
+  ns-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  ns-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  };
