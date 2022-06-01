@@ -36,29 +36,48 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Main activity that runs the app from the start and handles system
+     * processing between screens
+     */
+
     private BluetoothDevice thunder;
-    private BluetoothAdapter adapter;
+    private BluetoothAdapter adapter; /**Variable for holding the adapter*/
     private String ourDev = "Eric Spidle";
     private String hardwareaddr = "";
     private Set<BluetoothDevice> pairedDevs;
     private BluetoothSocket connection;
-    private String TAG = "Main";
+    private String TAG = "Main"; /** Tag to let other intents know what activity*/
     private BluetoothLeService myBluetoothLeService;
 
 
+    /**
+     *  onCreate is ran when the activity first begins to set up an initial state for the
+     *  activity.
+     * @param savedInstanceState -last known state of the application
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
-    public void startBluetoothActivity(View view)
+    /**
+     * Function called when we click the bluetooth button. This starts the bluetooth
+     * activity and creates a new screen for the user to see.
+     *
+     */
+    public void startBluetoothActivity()
     {
 
         Intent mIntent = new Intent(this, BluetoothScanActivity.class);
         startActivity(mIntent);
     }
 
+    /**
+     * Testing method for making a toast notification with a button
+     * @param view - current view to pass snackbar too
+     */
     public void sayHiToEric(View view)
     {
        snackBarAlert(view, "Hi Eric!");

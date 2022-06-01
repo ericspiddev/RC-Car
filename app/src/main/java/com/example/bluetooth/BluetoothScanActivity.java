@@ -22,6 +22,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activty that runs when the user clicks the bluetooth button This shows the user
+ * the list of nearby BluetoothLE devices in a scrollable list
+ */
 public class BluetoothScanActivity extends AppCompatActivity {
     private ArrayList<BluetoothDevice> scannedDevices = new ArrayList<>();
 
@@ -31,6 +35,12 @@ public class BluetoothScanActivity extends AppCompatActivity {
     private Handler handle;
     private final int SCAN_DURATION = 10000;
 
+
+    /**
+     *  onCreate is ran when the activity first begins to set up an initial state for the
+     *  activity.
+     * @param savedInstanceState -last known state of the application
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +62,10 @@ public class BluetoothScanActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This function is called after onStart and is what actually starts the scanning
+     * and creation of the recyclerView
+     */
     @Override
     public void onResume() {
         super.onResume();
@@ -63,8 +77,9 @@ public class BluetoothScanActivity extends AppCompatActivity {
         scanLeDevice();
         RecyclerView rv = findViewById(R.id.rvDevs);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter( new DeviceAdapter(scannedDevices));
+        rv.setAdapter( new DeviceAdapter(generateData()));
     }
+
 
     private void scanLeDevice() {
         if (!scanning) {
@@ -97,21 +112,21 @@ public class BluetoothScanActivity extends AppCompatActivity {
                 }
             };
 
-//    private List<String> generateData()
-//    {
-//        List<String> data = new ArrayList<>();
-//        for (int i = 0; i < 100; i++) {
-//            data.add(i + "th Element");
-//        }
-//        return data;
-//    }
+    private List<String> generateData()
+    {
+        List<String> data = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            data.add("Device " + i);
+        }
+        return data;
+    }
 
     private boolean checkPermission()
     {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.BLUETOOTH_SCAN}, 100);
+           // ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.BLUETOOTH_SCAN}, 100);
             // here to request the missing permissions, and then overriding
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
