@@ -23,9 +23,9 @@
 #include <BLEServer.h>
 #include <BLEUtils.h>
 #include <BLE2902.h>
-#include <Servo.h>
+#include <ESP32PWM.h>
+#include <ESP32Servo.h>
 
-//gages test
 
 
 BLEServer *pServer = NULL;
