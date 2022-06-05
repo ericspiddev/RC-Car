@@ -159,14 +159,14 @@ void loop() {
 
 }
 
-void setRCDirection(int directionVar) {s
+void setRCDirection(int directionVar) {
   if (directionVar == 0) { //straight
     steer.write(0);
   }
   else if (directionVar == 1) { //left
     steer.write(90);
   }
-  else if () { //right
+  else if (directionVar == 2) { //right
     steer.write(180);
   }
 }
@@ -182,6 +182,6 @@ void setRCFR(int FR, int speedVar) {
     ledcWrite(reverseLeft, speedVar);
     ledcWrite(reverseRight, speedVar);
     ledcWrite(forwardLeft, 0);
-    ledcWrite(forwardRight, 0ar);
+    ledcWrite(forwardRight, 0);
   }
 }
