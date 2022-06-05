@@ -23,12 +23,22 @@
 #include <BLEServer.h>
 #include <BLEUtils.h>
 #include <BLE2902.h>
+#include <sstream>
+
+void decodeCommand (uint8_t command);
 
 BLEServer *pServer = NULL;
 BLECharacteristic * pTxCharacteristic;
 bool deviceConnected = false;
 bool oldDeviceConnected = false;
-uint8_t txValue = 0;
+uint8_t txValue = 1;
+uint8_t command = 0;
+uint8_t oldCommand = 0;
+uint8_t steering = 0;
+uint8_t setDirection = 0;
+uint8_t setCarSpeed = 0;
+std:: string hold;
+
 
 // See the following for generating UUIDs:
 // https://www.uuidgenerator.net/
@@ -51,21 +61,16 @@ class MyServerCallbacks: public BLEServerCallbacks {
 class MyCallbacks: public BLECharacteristicCallbacks {
     void onWrite(BLECharacteristic *pCharacteristic) {
       std::string rxValue = pCharacteristic->getValue();
+     Serial.println("data recived");
+      std:: stringstream convert(rxValue);
+      convert >> command;
+         Serial.println("data converted to int");
 
-      if (rxValue.length() > 0) {
-        Serial.println("*********");
-        Serial.print("Received Value: ");
-        for (int i = 0; i < rxValue.length(); i++)
-          Serial.print(rxValue[i]);
-
-        Serial.println();
-        Serial.println("*********");
-      }
     }
 };
 
 
-void setup() {
+void setup() { 
   Serial.begin(115200);
 
   // Create the BLE Device
@@ -103,10 +108,18 @@ void setup() {
 
 void loop() {
 
-    if (deviceConnected) {
-        pTxCharacteristic->setValue(&txValue, 1);
-        pTxCharacteristic->notify();
-        txValue++;
+    if (deviceConnected && command != oldCommand) {
+//        pTxCharacteristic->setValue(&txValue, 1);
+//        pTxCharacteristic->notify();
+//        txValue++;
+          Serial.println("starting conversion");
+          decodeCommand(command);
+          oldCommand = command;
+          Serial.println(steering);
+          Serial.println(setDirection);
+          Serial.println(setCarSpeed);
+          
+          
 		delay(10); // bluetooth stack will go into congestion, if too many packets are sent
 	}
 
@@ -122,4 +135,16 @@ void loop() {
 		// do stuff here on connecting
         oldDeviceConnected = deviceConnected;
     }
+}
+
+void decodeCommand (uint8_t command)
+{
+  byte maskSteer = B00110000;
+  byte maskDirect = B11000000;
+  byte maskSpeed = B00001111;
+  
+  steering = (command & maskSteer) >> 4;
+  setDirection = (command & maskDirect) >> 6;
+  setCarSpeed = (command & maskSpeed);
+
 }
