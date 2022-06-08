@@ -55,19 +55,22 @@ public class MainActivity extends AppCompatActivity {
      * processing between screens
      */
 
-    private final byte[] FORWARD = convertToByteArray(1);
+    private final byte[] FORWARD = convertToByteArray(65);
     private final byte[] BACKWARD = convertToByteArray(2);
     private final byte[] LEFT = convertToByteArray(4);
     private final byte[] RIGHT = convertToByteArray(8);
     private final byte[] SPEED = convertToByteArray(50);
+    private ScanResult result;
 
     private final UUID serviceUUID = UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E"); // do we need to use this? 00000000-0000-1000-8000-00805f9b34fb
-    private final UUID txUUID = UUID.fromString("6E400002-B5A3-F393-E0A9-E50E24DCCA9E");
-    private final UUID rxUUID = UUID.fromString("6E400003-B5A3-F393-E0A9-E50E24DCCA9E");
+    private final UUID txUUID = UUID.fromString("6E400003-B5A3-F393-E0A9-E50E24DCCA9E");
+    private final UUID rxUUID = UUID.fromString("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
+
+    private BluetoothGattCharacteristic rxCharacteristic;
 
     private BluetoothAdapter btAdapt;
     private BluetoothLeDeviceFilter filter =
-            new BluetoothLeDeviceFilter.Builder().setNamePattern(Pattern.compile("RC Car")).build();
+            new BluetoothLeDeviceFilter.Builder().setNamePattern(Pattern.compile("Aaron")).build();
     private final int RCCARRESULTCODE = 7;
     private BluetoothDevice esp32;
 
@@ -117,11 +120,13 @@ public class MainActivity extends AppCompatActivity {
     {
         if(resultCode != Activity.RESULT_OK)
         {
+            Log.e("ACTIVITY", "Error in result");
            return;
         }
-        if(resultCode == RCCARRESULTCODE && data != null)
+        if(requestCode == RCCARRESULTCODE && data != null)
         {
-            esp32 = data.getParcelableExtra(CompanionDeviceManager.EXTRA_DEVICE);
+            result = data.getParcelableExtra(CompanionDeviceManager.EXTRA_DEVICE);
+            esp32 = result.getDevice();
             if(esp32 != null)
             {
                 esp32.connectGatt(this, false, gattCallback);
@@ -159,13 +164,13 @@ public class MainActivity extends AppCompatActivity {
       @Override
       public void onServicesDiscovered(BluetoothGatt gatt, int status)
       {
+
           Log.w("BluetoothGattCallback", "Discovered " + gatt.getServices().size() + " for " +
                   gatt.getDevice().getAddress());
           printGattTable(gatt);
       }
       @Override
-        public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic
-      ,int status)
+      public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic,  int status)
       {
           if(status == BluetoothGatt.GATT_SUCCESS)
           {
@@ -175,16 +180,19 @@ public class MainActivity extends AppCompatActivity {
                       characteristic.getValue().toString() );
           }
           else if(status == BluetoothGatt.GATT_INVALID_ATTRIBUTE_LENGTH){
-
+              Log.e("WRITE", "Invalid attribute length");
           }
           else if(status == BluetoothGatt.GATT_WRITE_NOT_PERMITTED)
           {
-
+             Log.e("WRITE", "Write not permitted here");
+          }
+          else
+          {
+              Log.e("WRITE", "Status is " + status);
           }
       }
 
     };
-
 
     private void printGattTable(BluetoothGatt gatt)
     {
@@ -198,6 +206,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("printGattTable", "Service is " + service.getUuid());
                 for (BluetoothGattCharacteristic character : service.getCharacteristics())
                 {
+                    Log.e("UUID's", "char uuid is " + character.getUuid().toString());
+                    if(character.getUuid().equals(rxUUID))
+                    {
+                        rxCharacteristic = character;
+                    }
                     Log.i("printGattTable", "\tCharacteristic is " + character.toString());
                 }
             }
@@ -222,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(CharSequence error) {
-                        Log.e("SCAN", "Cannot find a BLE device");
+                        Log.e("SCAN", "Cannot find a BLE device with error" + error.toString());
                     }
                 }
         , null);
@@ -230,9 +243,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendData(View v)
     {
-        if(btGatt != null)
+        if(btGatt != null && rxCharacteristic != null)
         {
-            writeCharacteristic(null, FORWARD);
+            writeCharacteristic(btGatt, rxCharacteristic, FORWARD);
         }
         else
         {
@@ -281,17 +294,20 @@ public class MainActivity extends AppCompatActivity {
         return ((characteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_WRITE) != 0);
     }
 
-    private void writeCharacteristic(BluetoothGattCharacteristic characteristic, byte[] data)
+    private void writeCharacteristic(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, byte[] data)
     {
         if(isWritable(characteristic))
         {
             characteristic.setWriteType(BluetoothGattCharacteristic.PROPERTY_WRITE);
             characteristic.setValue(data);
+           Boolean test = gatt.writeCharacteristic(characteristic);
+            Log.i("DATA", "write is " + test.toString());
         }
         else if(isWritableNoResponse(characteristic))
         {
             characteristic.setWriteType(BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE);
             characteristic.setValue(data);
+            gatt.writeCharacteristic(characteristic);
         }
         else
         {
