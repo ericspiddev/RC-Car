@@ -6,16 +6,25 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
+import android.bluetooth.le.ScanFilter;
 import android.bluetooth.le.ScanResult;
+import android.bluetooth.le.ScanSettings;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.ParcelUuid;
+import android.util.Log;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,14 +35,16 @@ import java.util.List;
  * Activty that runs when the user clicks the bluetooth button This shows the user
  * the list of nearby BluetoothLE devices in a scrollable list
  */
+@androidx.annotation.RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class BluetoothScanActivity extends AppCompatActivity {
     private ArrayList<BluetoothDevice> scannedDevices = new ArrayList<>();
-
+    private String btPermission = Manifest.permission.BLUETOOTH_ADMIN;
+    private String localPermission = Manifest.permission.ACCESS_FINE_LOCATION;
     private BluetoothAdapter mAdapter;
     private BluetoothLeScanner scanner;
     private boolean scanning = false;
     private Handler handle;
-    private final int SCAN_DURATION = 10000;
+    private final int SCAN_DURATION = 50000;
 
 
     /**
@@ -47,7 +58,7 @@ public class BluetoothScanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bluetooth);
         handle = new Handler();
 
-        if(!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
+        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
             Toast.makeText(this, "Bluetooth LE not supported", Toast.LENGTH_LONG).show();
             finish();
         }
@@ -74,31 +85,29 @@ public class BluetoothScanActivity extends AppCompatActivity {
             finish();
         }
         scanner = mAdapter.getBluetoothLeScanner();
-        scanLeDevice();
+        // scanLeDevice();
         RecyclerView rv = findViewById(R.id.rvDevs);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter( new DeviceAdapter(generateData()));
+        rv.setAdapter(new DeviceAdapter(scannedDevices));
     }
 
 
     private void scanLeDevice() {
+
         if (!scanning) {
             handle.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     scanning = false;
-                    if(checkPermission())
-                    scanner.stopScan(scanCallback);
+                    //scanner.stopScan(scanCallback);
                 }
             }, SCAN_DURATION);
             scanning = true;
-            if(checkPermission())
-            scanner.startScan(scanCallback);
+               // scanner.startScan(scanCallback);
         }
         else {
             scanning = false;
-            if(checkPermission())
-                scanner.stopScan(scanCallback);
+              //  scanner.stopScan(scanCallback);
         }
     }
 
@@ -112,27 +121,8 @@ public class BluetoothScanActivity extends AppCompatActivity {
                 }
             };
 
-    private List<String> generateData()
-    {
-        List<String> data = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            data.add("Device " + i);
-        }
-        return data;
-    }
 
-    private boolean checkPermission()
-    {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-           // ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.BLUETOOTH_SCAN}, 100);
-            // here to request the missing permissions, and then overriding
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return false;
-        }
-        return false;
-    }
+
+
 
 }

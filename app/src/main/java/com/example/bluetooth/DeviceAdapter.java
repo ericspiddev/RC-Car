@@ -3,6 +3,7 @@ package com.example.bluetooth;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.text.Layout;
+import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,17 +22,17 @@ import java.util.List;
  * each device's name in a row.
  */
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder> {
-    private List<String> scannedDevices;
+    private List<BluetoothDevice>scannedDevices;
     private ArrayList<String> deviceNames =  new ArrayList <>();
 
     /**
      *  The contstructor inits a list of strings that hold the scanned devices
      * @param scannedDevices - list of available devices
      */
-    public DeviceAdapter(List<String> scannedDevices)
+    public DeviceAdapter(List<BluetoothDevice> scannedDevices)
     {
         this.scannedDevices = scannedDevices;
-       // extractDeviceNames();
+        extractDeviceNames();
     }
 
     /**
@@ -57,7 +58,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position)
     {
-       holder.textView.setText(this.scannedDevices.get(position)); //set the row to our text
+       holder.textView.setText(this.deviceNames.get(position)); //set the row to our text
     }
 
     /**
@@ -97,11 +98,17 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
         }
     }
 
-//    private void extractDeviceNames()
-//    {
-//        for (BluetoothDevice device :scannedDevices)
-//        {
-//            deviceNames.add(device.getName());
-//        }
-//    }
+    private void extractDeviceNames()
+    {
+        for (BluetoothDevice device :scannedDevices)
+        {
+            try {
+                deviceNames.add(device.getName());
+            }
+            catch (SecurityException e)
+            {
+                Log.e("SCAN", "Uh oh we do not have permission for that");
+            }
+        }
+    }
 }
