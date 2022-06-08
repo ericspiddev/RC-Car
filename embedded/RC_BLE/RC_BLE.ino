@@ -139,7 +139,6 @@ void setup() {
 
 void loop() {
 
-<<<<<<< HEAD
     if (deviceConnected && command != oldCommand) {
 //        pTxCharacteristic->setValue(&txValue, 1);
 //        pTxCharacteristic->notify();
@@ -150,7 +149,7 @@ void loop() {
           Serial.println(steering);
           Serial.println(setDirection);
           Serial.println(setCarSpeed);      
-          setRCDirecttion(steering);
+          setRCDirection(steering);
           setRCFR(setDirection, setCarSpeed);
 		      delay(10); // bluetooth stack will go into congestion, if too many packets are sent
 	}
