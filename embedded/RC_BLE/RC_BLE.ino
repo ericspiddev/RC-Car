@@ -159,6 +159,8 @@ void setup() {
   Serial.println("Waiting a client connection to notify...");
 
   steer.attach(32); //GPIO 32 FOR SERVO MOVEMENT
+
+  steer.write(0);
 }
 
 /*
@@ -173,8 +175,11 @@ void loop() {
     Serial.println("starting conversion");
     decodeCommand(command);
     oldCommand = command;
+    Serial.println("Steering Command: ");
     Serial.println(steering);
+    Serial.println("Direction Command: ");
     Serial.println(setDirection);
+    Serial.println("Speed Command: ");
     Serial.println(setCarSpeed);
     setRCDirection(steering);
     setRCFR(setDirection, setCarSpeed);
@@ -193,26 +198,19 @@ void loop() {
     // do stuff here on connecting
     oldDeviceConnected = deviceConnected;
   }
-
-  //testing purposes
-  //ledcWrite(channel2, 254);
-  //ledcWrite(channel1, 0);
-  //ledcWrite(channel4, 0);
-  //ledcWrite(channel3, 254);
-
 }
 
 /*
 
 */
 void setRCDirection(int directionVar) {
-  if (directionVar == 0) { //straight
+  if (directionVar == 0) { //right
     steer.write(0);
   }
-  else if (directionVar == 1) { //left
+  else if (directionVar == 1) { //straight
     steer.write(90);
   }
-  else if (directionVar == 2) { //right
+  else if (directionVar == 3) { //left
     steer.write(180);
   }
 }
