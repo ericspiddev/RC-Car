@@ -53,17 +53,17 @@ void setRCFR(int FR, int speedVar);
 Servo steer;
 
 // the number of the motor pin
-const int in2 = 16;  // 16 corresponds to GPIO16
-const int in1 = 14; // 14 corresponds to GPIO14
-const int in3 = 26; // 26 corresponds to GPIO26
-const int in4 = 27; // 27 corresponds to GPIO27
+const int forLeft = 16;  // 16 corresponds to GPIO16
+const int revLeft = 14; // 14 corresponds to GPIO14
+const int forRight = 26; // 26 corresponds to GPIO26 
+const int revRight = 27; // 27 corresponds to GPIO27 //reverse right
 
 // setting PWM properties
-const int freq = 100; //100hz frequency
-const int channel2 = 5;
-const int channel1 = 6;
-const int channel3 = 4;
-const int channel4 = 3;
+const int freq = 200; //100hz frequency
+const int leftForwardChan = 5;
+const int leftReverseChan = 6;
+const int rightForwardChan = 4;
+const int rightReverseChan = 3;
 const int resolution = 8; //8 bit resolution
 
 //delay designation
@@ -102,23 +102,23 @@ class MyCallbacks: public BLECharacteristicCallbacks {
 void setup() {
   // configure LED PWM functionalitites
   delay(delayms);
-  ledcSetup(channel1, freq, resolution);
+  ledcSetup(leftReverseChan, freq, resolution);
   delay(delayms);
-  ledcSetup(channel2, freq, resolution);
+  ledcSetup(leftForwardChan, freq, resolution);
   delay(delayms);
-  ledcSetup(channel3, freq, resolution);
+  ledcSetup(rightForwardChan, freq, resolution);
   delay(delayms);
-  ledcSetup(channel4, freq, resolution);
+  ledcSetup(rightReverseChan, freq, resolution);
   delay(delayms);
 
   // attach the channel to the GPIO to be controlled
-  ledcAttachPin(in2, channel2);
+  ledcAttachPin(forLeft, leftForwardChan);
   delay(delayms);
-  ledcAttachPin(in1, channel1);
+  ledcAttachPin(revLeft, leftReverseChan);
   delay(delayms);
-  ledcAttachPin(in3, channel3);
+  ledcAttachPin(forRight, rightForwardChan);
   delay(delayms);
-  ledcAttachPin(in4, channel4);
+  ledcAttachPin(revRight, rightReverseChan);
   delay(delayms);
 
   // Create the BLE Device
@@ -161,6 +161,9 @@ void setup() {
   steer.attach(32); //GPIO 32 FOR SERVO MOVEMENT
 
   steer.write(0);
+
+  
+  
 }
 
 /*
@@ -219,18 +222,18 @@ void setRCDirection(int directionVar) {
 
 */
 void setRCFR(int FR, int speedVar) {
-  speedVar = speedVar * 17; //multiples to reach 255 resolution
+  speedVar = speedVar * 15; //multiples to reach 255 resolution
   if (FR == 1) {
-    ledcWrite(channel2, speedVar);
-    ledcWrite(channel4, speedVar);
-    ledcWrite(channel1, 0);
-    ledcWrite(channel3, 0);
+    ledcWrite(leftForwardChan, speedVar);
+    ledcWrite(rightForwardChan, speedVar);
+    ledcWrite(leftReverseChan, 0);
+    ledcWrite(rightReverseChan, 0);
   }
   else {
-    ledcWrite(channel1, speedVar);
-    ledcWrite(channel3, speedVar);
-    ledcWrite(channel4, 0);
-    ledcWrite(channel2, 0);
+    ledcWrite(leftReverseChan, speedVar);
+    ledcWrite(rightReverseChan, speedVar);
+    ledcWrite(rightForwardChan, 0);
+    ledcWrite(leftForwardChan, 0);
   }
 }
 
