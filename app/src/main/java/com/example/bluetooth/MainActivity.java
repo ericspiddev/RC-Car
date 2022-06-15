@@ -1,37 +1,31 @@
 package com.example.bluetooth;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCallback;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothManager;
-import android.bluetooth.BluetoothProfile;
 import android.bluetooth.le.ScanResult;
-import android.bluetooth.le.ScanSettings;
 import android.companion.AssociationRequest;
 import android.companion.BluetoothLeDeviceFilter;
 import android.companion.CompanionDeviceManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.regex.Pattern;
 
 
@@ -42,146 +36,72 @@ public class MainActivity extends AppCompatActivity {
      * Main activity that runs the app from the start and handles system
      * processing between screens
      */
-
-
     private ScanResult result;
-
-    private BluetoothAdapter btAdapt;
+    private String nameTest;
     private BluetoothLeDeviceFilter filter =
             new BluetoothLeDeviceFilter.Builder().setNamePattern(Pattern.compile("Aaron")).build();
     private final int RCCARRESULTCODE = 7;
-    private BluetoothDevice esp32;
-
-    private Boolean isScanning = false;
-
     private BluetoothBackground bt;
-
-    private String btPermission = Manifest.permission.BLUETOOTH_SCAN;
-    private String localPermission = Manifest.permission.ACCESS_FINE_LOCATION;
-    private ScanSettings settings = new ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_BALANCED).build();
-
-
-    private AssociationRequest pairRequest = new AssociationRequest.Builder().addDeviceFilter(filter)
-            .setSingleDevice(true)
-            .build();
-
     private CompanionDeviceManager devManage;
-    private BluetoothGatt btGatt = null;
+    private BluetoothManager bluetoothManager;
+
+    private int test = 0;
+    private final String TAG = "MAIN";
+
 
     /**
-     *  onCreate is ran when the activity first begins to set up an initial state for the
-     *  activity.
+     * onCreate is ran when the activity first begins to set up an initial state for the
+     * activity.
+     *
      * @param savedInstanceState -last known state of the application
      */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         devManage = (CompanionDeviceManager) getSystemService(Context.COMPANION_DEVICE_SERVICE);
-        bt = new BluetoothBackground(this, devManage);
+
     }
 
     @Override
     protected void onResume() {
+        // requestPermissions( new String[] {Manifest.permission.BLUETOOTH}, 4);
         super.onResume();
-        final BluetoothManager bluetoothManager =
-                (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-        btAdapt = bluetoothManager.getAdapter();
-        if (btAdapt == null || !btAdapt.isEnabled()) {
-            notifyBluetoothDisabled();
-            //finish();
-        }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-    {
-        if(resultCode != Activity.RESULT_OK)
-        {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (resultCode != Activity.RESULT_OK) {
             Log.e("ACTIVITY", "Error in result");
             return;
         }
-        if(requestCode == RCCARRESULTCODE && data != null)
-        {
+        if (requestCode == RCCARRESULTCODE && data != null) {
             result = data.getParcelableExtra(CompanionDeviceManager.EXTRA_DEVICE);
-            if( result.getDevice() != null)
-            {
-               bt.setEsp32(result.getDevice());
+            if (result.getDevice() != null) {
+                bt.setEsp32(result.getDevice());
+                bt.connectGatt();
             }
-        }
-        else {
+        } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
-//    private BluetoothGattCallback  gattCallback = new BluetoothGattCallback() {
-//        @Override
-//        public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
-//            String devAddr = gatt.getDevice().getAddress();
-//            if(status == BluetoothGatt.GATT_SUCCESS)
-//            {
-//                if(newState == BluetoothProfile.STATE_CONNECTED)
-//                {
-//                    Log.w("BluetoothGattCallback", "Connected to " + devAddr);
-//                    btGatt = gatt;
-//                    btGatt.discoverServices();
-//                }
-//                else if(newState == BluetoothProfile.STATE_DISCONNECTED)
-//                {
-//                    Log.w("BluetoothGattCallback", "Disconnected from " + devAddr);
-//                    gatt.close();
-//                }
-//            }
-//            else{
-//                Log.w("BluetoothGattCallback", "Error " + status + " encountered for device "
-//                 + devAddr);
-//            }
-//            super.onConnectionStateChange(gatt, status, newState);
-//        }
-//      @Override
-//      public void onServicesDiscovered(BluetoothGatt gatt, int status)
-//      {
-//          Log.w("BluetoothGattCallback", "Discovered " + gatt.getServices().size() + " for " +
-//                  gatt.getDevice().getAddress());
-//          printGattTable(gatt);
-//      }
-//
-//      @Override
-//      public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic,  int status)
-//      {
-//          if(status == BluetoothGatt.GATT_SUCCESS)
-//          {
-//              Log.i("Oncharwrite", "We wrote to the characteristic " +
-//                      characteristic.getUuid().toString() +
-//                      " " +
-//                      characteristic.getValue().toString() );
-//          }
-//          else if(status == BluetoothGatt.GATT_INVALID_ATTRIBUTE_LENGTH){
-//              Log.e("WRITE", "Invalid attribute length");
-//          }
-//          else if(status == BluetoothGatt.GATT_WRITE_NOT_PERMITTED)
-//          {
-//             Log.e("WRITE", "Write not permitted here");
-//          }
-//          else
-//          {
-//              Log.e("WRITE", "Status is " + status);
-//          }
-//      }
-//
-//    };
-
     public void scanAndConnectBluetooth(View v) {
+       // setBluetoothName(); this works just commented out for now
+        AssociationRequest pairRequest = new AssociationRequest.Builder().addDeviceFilter(filter)
+                .setSingleDevice(true)
+                .build();
+        bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+        bt = new BluetoothBackground(this, bluetoothManager);
         devManage.associate(pairRequest, new CompanionDeviceManager.Callback() {
                     @Override
                     public void onDeviceFound(IntentSender chooserLauncher) {
-                        try{
+                        try {
                             startIntentSenderForResult(
-                                    chooserLauncher, RCCARRESULTCODE, null, 0,0,0
+                                    chooserLauncher, RCCARRESULTCODE, null, 0, 0, 0
                             );
-                        }
-                        catch (IntentSender.SendIntentException e)
-                        {
+                        } catch (IntentSender.SendIntentException e) {
                             Log.e("MAIN", "Scan failed");
                         }
                     }
@@ -191,17 +111,56 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("SCAN", "Cannot find a BLE device with error" + error.toString());
                     }
                 }
-        , null);
+                , null);
     }
 
 
-
-
-    private void notifyBluetoothDisabled()
+    public void drive(View v)
     {
+        if(bt != null) {
+            switch (v.getId()) {
+                case R.id.fButton:
+                    bt.goForward();
+                    break;
+                case R.id.bButton:
+                    bt.goBackward();
+                    break;
+                case R.id.lButton:
+                    bt.goLeft();
+                    break;
+                case R.id.rButton:
+                    bt.goRight();
+                    break;
+                default:
+                    Log.e(TAG, "Wht the heck did we just press???");
+                    break;
+            }
+        }
+        else
+        {
+            Log.e(TAG, "CONNECT TO BT DEV FIRST");
+        }
+    }
+
+    public void readData(View v)
+    {
+        if(bt != null)
+        {
+            bt.readData();
+        }
+    }
+
+    private void setBluetoothName()
+    {
+        EditText btName = findViewById(R.id.editBtName);
+        nameTest = btName.getText().toString();
+        filter = new BluetoothLeDeviceFilter.Builder().setNamePattern(Pattern.compile(btName.getText().toString())).build();
+    }
+
+    private void notifyBluetoothDisabled() {
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.toast_layout_root));
-        TextView text = (TextView) layout.findViewById(R.id.text);
+        View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.toast_layout_root));
+        TextView text = layout.findViewById(R.id.text);
         text.setText("Bluetooth disabled");
 
         Toast notif = new Toast(getApplicationContext());
@@ -211,53 +170,5 @@ public class MainActivity extends AppCompatActivity {
         notif.show();
     }
 
-//    private ActivityResultLauncher<String> requestPermissionLauncher =
-//            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted ->{
-//                if (isGranted) {
-//                    Log.e("SCAN", "enabled");
-//                } else {
-//                    Log.e("SCAN", "Permission denied!");
-//                    //finish();
-//                }
-//            });
-
-
-//    private boolean isReadable(BluetoothGattCharacteristic characteristic)
-//    {
-//        return ((characteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_READ) != 0);
-//    }
-
-//    private boolean isWritableNoResponse(BluetoothGattCharacteristic characteristic)
-//    {
-//        return ((characteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE) != 0);
-//    }
-//    private boolean isWritable(BluetoothGattCharacteristic characteristic)
-//    {
-//        return ((characteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_WRITE) != 0);
-//    }
-//
-//    private void writeCharacteristic(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, byte[] data)
-//    {
-//        if(isWritable(characteristic))
-//        {
-//            characteristic.setWriteType(BluetoothGattCharacteristic.PROPERTY_WRITE);
-//            characteristic.setValue(data);
-//           Boolean test = gatt.writeCharacteristic(characteristic);
-//            Log.i("DATA", "write is " + test.toString());
-//        }
-//        else if(isWritableNoResponse(characteristic))
-//        {
-//            characteristic.setWriteType(BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE);
-//            characteristic.setValue(data);
-//            gatt.writeCharacteristic(characteristic);
-//        }
-//        else
-//        {
-//            Log.e("writeCharacteristic", "This bluetooth characteristic is not writable");
-//            return;
-//        }
-//    }
-
-
-
 }
+

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <Button
         android:id="@+id/connectBtn"
         android:layout_width="163dp"
@@ -24,7 +23,8 @@
         android:id="@+id/sendData"
         android:layout_width="114dp"
         android:layout_height="53dp"
-        android:text="Send Data"
+        android:text="Read"
+        android:onClick="readData"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.824"

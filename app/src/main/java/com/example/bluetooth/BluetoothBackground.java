@@ -1,20 +1,21 @@
 package com.example.bluetooth;
-
 import android.Manifest;
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothProfile;
-import android.companion.AssociationRequest;
-import android.companion.BluetoothLeDeviceFilter;
 import android.companion.CompanionDeviceManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 
@@ -26,34 +27,43 @@ public class BluetoothBackground {
 
     private Context activityContext;
     private CompanionDeviceManager devManage;
-    private BluetoothGatt bluetoothGatt;
+    private BluetoothGatt btGatt;
+    private BluetoothManager btManage;
+    private BluetoothAdapter btAdapt;
+    private BluetoothDevice esp32;
 
-    private final byte[] FORWARD = convertToByteArray(65);
+    private final byte[] FORWARD = convertToByteArray(1);
     private final byte[] BACKWARD = convertToByteArray(2);
     private final byte[] LEFT = convertToByteArray(4);
     private final byte[] RIGHT = convertToByteArray(8);
     private final byte[] SPEED = convertToByteArray(50);
 
-    private BluetoothDevice esp32;
+
     private final UUID serviceUUID = UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E"); // do we need to use this? 00000000-0000-1000-8000-00805f9b34fb
     private final UUID txUUID = UUID.fromString("6E400003-B5A3-F393-E0A9-E50E24DCCA9E");
     private final UUID rxUUID = UUID.fromString("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
+    private BluetoothGattService uartBtService;
     private BluetoothGattCharacteristic rxCharacteristic;
+    private BluetoothGattCharacteristic txCharacteristic;
 
-    public BluetoothBackground(Context c, CompanionDeviceManager manager) {
+    private String TAG = "BACKGROUND";
+
+    public BluetoothBackground(Context c, BluetoothManager manager)
+    {
         this.activityContext = c;
-        this.devManage = manager;
-    }
-
-    public void connectToDevice(String devName) {
-
+        this.btManage = manager;
+        btAdapt = btManage.getAdapter();
+        if(!isBluetoothSupported())
+            Log.e("BT", "Bluetooth not supported!");
     }
 
     public void goForward() {
+        byte dir = 1;
         writeData(FORWARD);
     }
 
     public void goBackward() {
+        byte dir = 2;
         writeData(BACKWARD);
     }
 
@@ -65,9 +75,9 @@ public class BluetoothBackground {
         writeData(RIGHT);
     }
 
-    public void writeData(byte direction[]) {
-        if (bluetoothGatt != null && rxCharacteristic != null) {
-            writeCharacteristic(bluetoothGatt, rxCharacteristic, direction);
+    public void writeData(byte[] direction) {
+        if (btGatt != null && rxCharacteristic != null) {
+            writeCharacteristic(btGatt, rxCharacteristic, direction);
         } else {
             Log.e("SENDDATA", "Please connect to bluetooth device first");
         }
@@ -81,47 +91,60 @@ public class BluetoothBackground {
     {
         if(esp32 != null && checkBtPermission())
         {
-            esp32.connectGatt(activityContext, false,gattCallback);
+            esp32.connectGatt(activityContext, false, gattCallback, 2);
         }
     }
 
-    private void printGattTable(BluetoothGatt gatt) {
+    public void readData()
+    {
+        readCharacteristic(btGatt, txCharacteristic);
+    }
+
+    private void getServiceAndCharacteristics(BluetoothGatt gatt) {
         if (gatt.getServices() == null)
         {
             Log.i("printGattTable", "No service or characteristics available, call " +
                     "discover services first?");
         }
-        else {
-            for (BluetoothGattService service : gatt.getServices())
+        else
+        {
+            uartBtService = gatt.getService(serviceUUID);
+            if(uartBtService != null)
             {
-                Log.i("printGattTable", "Service is " + service.getUuid());
-                for (BluetoothGattCharacteristic character : service.getCharacteristics())
-                {
-                    Log.e("UUID's", "char uuid is " + character.getUuid().toString());
-                    if (character.getUuid().equals(rxUUID))
-                    {
-                        rxCharacteristic = character;
-                    }
-                    Log.i("printGattTable", "\tCharacteristic is " + character.toString());
-                }
+                rxCharacteristic = uartBtService.getCharacteristic(rxUUID);
+                txCharacteristic = uartBtService.getCharacteristic(txUUID);
             }
         }
     }
 
+
+    private void readCharacteristic(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic)
+    {
+        if(gatt == null || characteristic == null)
+        {
+            Log.e("BACKEND", "gatt or characteristic is null");
+            return;
+        }
+        if(isReadable(characteristic)){
+            if(checkBtPermission())
+                gatt.readCharacteristic(characteristic);
+        }
+
+    }
     private void writeCharacteristic(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, byte[] data) {
         if (isWritable(characteristic))
         {
-            characteristic.setWriteType(BluetoothGattCharacteristic.PROPERTY_WRITE);
+            characteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
             characteristic.setValue(data);
             if(checkBtPermission())
             {
                 Boolean test = gatt.writeCharacteristic(characteristic);
-                Log.i("DATA", "write is " + test.toString());
+                Log.i("DATA", "write is " + test);
             }
         }
         else if(isWritableNoResponse(characteristic))
         {
-            characteristic.setWriteType(BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE);
+            characteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE);
             characteristic.setValue(data);
             if(checkBtPermission())
             {
@@ -145,25 +168,31 @@ public class BluetoothBackground {
         return ((characteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_WRITE) != 0);
     }
 
+    private boolean isReadable(BluetoothGattCharacteristic characteristic)
+    {
+        return ((characteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_READ) != 0);
+    }
+
     public BluetoothGattCallback gattCallback = new BluetoothGattCallback() {
         @Override
-        public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
+        public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState)
+        {
             String devAddr = gatt.getDevice().getAddress();
             if(status == BluetoothGatt.GATT_SUCCESS)
             {
                 if(newState == BluetoothProfile.STATE_CONNECTED)
                 {
                     Log.w("BluetoothGattCallback", "Connected to " + devAddr);
-                    bluetoothGatt = gatt;
+                    btGatt = gatt;
                     if(checkBtPermission()) {
-                        bluetoothGatt.discoverServices();
+                        btGatt.discoverServices();
                     }
                 }
                 else if(newState == BluetoothProfile.STATE_DISCONNECTED)
                 {
                     Log.w("BluetoothGattCallback", "Disconnected from " + devAddr);
                     if(checkBtPermission()) {
-                        bluetoothGatt.close();
+                        btGatt.close();
                     }
                 }
             }
@@ -179,7 +208,7 @@ public class BluetoothBackground {
         {
             Log.w("BluetoothGattCallback", "Discovered " + gatt.getServices().size() + " for " +
                   gatt.getDevice().getAddress());
-            printGattTable(gatt);
+            getServiceAndCharacteristics(gatt);
         }
 
       @Override
@@ -204,11 +233,40 @@ public class BluetoothBackground {
               Log.e("WRITE", "Status is " + status);
           }
       }
+
+      @Override
+      public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status)
+      {
+          if(status == BluetoothGatt.GATT_SUCCESS)
+          {
+              Log.i(TAG,"Success! Read characteristic with value of " + characteristic.getValue().toString());
+          }
+          else if(status == BluetoothGatt.GATT_READ_NOT_PERMITTED)
+          {
+              Log.e(TAG, "Read not permitted for this uuid");
+          }
+          else
+          {
+              Log.e(TAG, "Other error occured in char read");
+          }
+      }
+
+
     };
+
+    private Boolean isBluetoothSupported()
+    {
+        if(btAdapt != null && btAdapt.isEnabled())
+        {
+            return true;
+        }
+        return false;
+    }
 
     private boolean checkBtPermission()
     {
-        if (ActivityCompat.checkSelfPermission(activityContext, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(activityContext, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
+
             Log.e("PERM_CHECK", "Uh oh no bluetooth permissions please allow bluetooth");
             return false;
         }
@@ -218,13 +276,14 @@ public class BluetoothBackground {
 
     private byte[] convertToByteArray(int num)
     {
-        return new byte[] {
-                (byte) ((num >> 24) & 0xff), //MS 8 bits 32-24
-                (byte) ((num >> 16) & 0xff), //16-24
-                (byte) ((num >> 8) & 0xff),//8-16
-                (byte) (num & 0xff) // LS 8 bits 0 - 8
-        };
+        byte[] byteArray = new byte[20];
+        byteArray[3] = (byte) ((num >> 24) & 0xff);
+        byteArray[2] = (byte) ((num >> 16) & 0xff);
+        byteArray[1] = (byte) ((num >> 8) & 0xff);//8-16
+        byteArray[0] = (byte) (num & 0xff);
+        return byteArray;
     }
+
 }
 
 
