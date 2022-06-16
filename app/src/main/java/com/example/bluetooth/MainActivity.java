@@ -1,12 +1,8 @@
 package com.example.bluetooth;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.Manifest;
 import android.app.Activity;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.le.ScanResult;
@@ -16,7 +12,6 @@ import android.companion.CompanionDeviceManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +19,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.regex.Pattern;
@@ -37,15 +33,14 @@ public class MainActivity extends AppCompatActivity {
      * processing between screens
      */
     private ScanResult result;
-    private String nameTest;
     private BluetoothLeDeviceFilter filter =
             new BluetoothLeDeviceFilter.Builder().setNamePattern(Pattern.compile("Aaron")).build();
     private final int RCCARRESULTCODE = 7;
     private BluetoothBackground bt;
     private CompanionDeviceManager devManage;
     private BluetoothManager bluetoothManager;
-
-    private int test = 0;
+    private SeekBar rangeSlide;
+    private int sliderVal = 0;
     private final String TAG = "MAIN";
 
 
@@ -61,12 +56,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         devManage = (CompanionDeviceManager) getSystemService(Context.COMPANION_DEVICE_SERVICE);
+        rangeSlide = findViewById(R.id.speedBar);
+        rangeSlide.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                 sliderVal = rangeSlide.getProgress();
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                if(bt != null)
+                {
+                    bt.updateSpeed((byte)sliderVal);
+                }
+            }
+        });
 
     }
 
     @Override
     protected void onResume() {
-        // requestPermissions( new String[] {Manifest.permission.BLUETOOTH}, 4);
         super.onResume();
     }
 
@@ -87,8 +102,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     public void scanAndConnectBluetooth(View v) {
-       // setBluetoothName(); this works just commented out for now
+        setBluetoothName();
         AssociationRequest pairRequest = new AssociationRequest.Builder().addDeviceFilter(filter)
                 .setSingleDevice(true)
                 .build();
@@ -142,18 +159,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void readData(View v)
-    {
-        if(bt != null)
-        {
-            bt.readData();
-        }
-    }
 
     private void setBluetoothName()
     {
         EditText btName = findViewById(R.id.editBtName);
-        nameTest = btName.getText().toString();
         filter = new BluetoothLeDeviceFilter.Builder().setNamePattern(Pattern.compile(btName.getText().toString())).build();
     }
 
