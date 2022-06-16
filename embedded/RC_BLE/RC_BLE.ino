@@ -47,10 +47,8 @@ std:: string hold;
 #define CHARACTERISTIC_UUID_TX "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"
 
 void decodeCommand (uint8_t command);
-void setRCDirection(int directionVar);
+void setRCDirection(int directionVar, int speedVar);
 void setRCFR(int FR, int speedVar);
-
-Servo steer;
 
 // the number of the motor pin
 const int forLeft = 16;  // 16 corresponds to GPIO16
@@ -59,7 +57,7 @@ const int forRight = 26; // 26 corresponds to GPIO26
 const int revRight = 27; // 27 corresponds to GPIO27 //reverse right
 
 // setting PWM properties
-const int freq = 200; //100hz frequency
+const int freq = 50; //100hz frequency
 const int leftForwardChan = 5;
 const int leftReverseChan = 6;
 const int rightForwardChan = 4;
@@ -157,13 +155,6 @@ void setup() {
   delay(delayms);
 
   Serial.println("Waiting a client connection to notify...");
-
-  steer.attach(32); //GPIO 32 FOR SERVO MOVEMENT
-
-  steer.write(0);
-
-  
-  
 }
 
 /*
@@ -184,7 +175,7 @@ void loop() {
     Serial.println(setDirection);
     Serial.println("Speed Command: ");
     Serial.println(setCarSpeed);
-    setRCDirection(steering);
+    setRCDirection(steering, setCarSpeed);
     setRCFR(setDirection, setCarSpeed);
     delay(10); // bluetooth stack will go into congestion, if too many packets are sent
   }
@@ -206,15 +197,20 @@ void loop() {
 /*
 
 */
-void setRCDirection(int directionVar) {
-  if (directionVar == 0) { //right
-    steer.write(0);
+void setRCDirection(int directionVar, int speedVar) {
+  if (directionVar == 0) { //stop
   }
-  else if (directionVar == 1) { //straight
-    steer.write(90);
+  else if (directionVar == 2) { //left
+    ledcWrite(leftForwardChan, 0);
+    ledcWrite(rightForwardChan, speedVar);
+    ledcWrite(leftReverseChan, speedVar);
+    ledcWrite(rightReverseChan, 0);
   }
-  else if (directionVar == 3) { //left
-    steer.write(180);
+  else if (directionVar == 1) { //right
+    ledcWrite(leftForwardChan, speedVar);
+    ledcWrite(rightForwardChan, 0);
+    ledcWrite(leftReverseChan, 0);
+    ledcWrite(rightReverseChan, speedVar);
   }
 }
 
