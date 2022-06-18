@@ -25,48 +25,83 @@ import java.util.UUID;
  */
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class BluetoothBackground {
-    /** Passed in Activity Context.*/
-    private final Context activityContext;
-    /** Variable to hold Gatt Server Object. */
+    /**
+     * Passed in Activity Context.
+     */
+    private  Context activityContext;
+    /**
+     * Variable to hold Gatt Server Object.
+     */
     private BluetoothGatt btGatt;
-    /** Manages all of the bluetooth devices (RC Car). */
-    private final BluetoothManager
+    /**
+     * Manages all of the bluetooth devices (RC Car).
+     */
+    private  BluetoothManager
             btManage;
-    /** Phone's physical bluetooth Adapter. */
-    private final BluetoothAdapter btAdapt;
-    /** Object* for the microcontroller. */
+    /**
+     * Phone's physical bluetooth Adapter.
+     */
+    private  BluetoothAdapter btAdapt;
+    /**
+     * Object* for the microcontroller.
+     */
     private BluetoothDevice esp32;
-    /**Byte to send over bluetooth. */
+    /**
+     * Byte to send over bluetooth.
+     */
     private byte carData = 0;
-    /** Byte value to send the car forward. */
+    /**
+     * Byte value to send the car forward.
+     */
     private final byte driveForward = 8;
-    /** Byte value to send the car backward. */
+    /**
+     * Byte value to send the car backward.
+     */
     private final byte driveBackward = 4;
-    /** Byte value to send the left. */
+    /**
+     * Byte value to send the left.
+     */
     private final byte driveLeft = 2;
-    /** Byte value to send the car right. */
+    /**
+     * Byte value to send the car right.
+     */
     private final byte driveRight = 1;
-    /** Holds the four bits for speed. */
+    /**
+     * Holds the four bits for speed.
+     */
     private byte currSpeed = 0;
-    /** Holds the four bits for direction. */
+    /**
+     * Holds the four bits for direction.
+     */
     private byte currDir = 0;
-    /** Value to shift the byte for direction. */
+    /**
+     * Value to shift the byte for direction.
+     */
     private final int shift = 4;
 
-    /** BT Service UUID.*/
+    /**
+     * BT Service UUID.
+     */
     private final UUID serviceUUID =
             UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E");
-    /**RX Char UUID.*/
+    /**
+     * RX Char UUID.
+     */
     private final UUID rxUUID =
-        UUID.fromString("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
-    /** Object to hold the uartBtService.*/
+            UUID.fromString("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
+    /**
+     * Object to hold the uartBtService.
+     */
     private BluetoothGattService uartBtService;
-    /** Object to handle the rx BLE Char.*/
+    /**
+     * Object to handle the rx BLE Char.
+     */
     private BluetoothGattCharacteristic rxCharacteristic;
 
     /**
      * Bluetooth Background constructor that creates a background object
      * so our main activity can bind to a bluetooth LE gatt.
+     *
      * @param c - passed context from the
      * @param manager - the bluetooth manager that is passed in from the activity
      */
@@ -77,9 +112,12 @@ public class BluetoothBackground {
         if (!isBluetoothSupported()) {
             Log.e("BT", "Bluetooth not supported!");
         }
-
     }
 
+    public BluetoothBackground()
+    {
+
+    }
     /**
      * This function is called to drive the car forward once we are
      * connected to a car.
@@ -321,7 +359,7 @@ public class BluetoothBackground {
      */
     private byte[] setCarData(final byte speed, final byte dir) {
         this.carData = 0;
-        this.carData |= dir << shift;
+        this.carData |= (dir << shift);
         this.carData |= speed;
         return new byte[] {this.carData};
     }

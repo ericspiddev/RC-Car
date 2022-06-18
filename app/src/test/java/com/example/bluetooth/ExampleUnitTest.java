@@ -12,6 +12,9 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+        BluetoothBackground bt =  new BluetoothBackground(null, null);
+
+        bt.goForward();
+        assertEquals(8, bt.currDir);
     }
 }
