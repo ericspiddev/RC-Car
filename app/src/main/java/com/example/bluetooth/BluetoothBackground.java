@@ -25,6 +25,7 @@ import java.util.UUID;
  */
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class BluetoothBackground {
+<<<<<<< HEAD
     /**
      * Passed in Activity Context.
      */
@@ -45,6 +46,18 @@ public class BluetoothBackground {
     /**
      * Object* for the microcontroller.
      */
+=======
+    /** Passed in Activity Context.*/
+    private Context activityContext;
+    /** Variable to hold Gatt Server Object. */
+    private BluetoothGatt btGatt;
+    /** Manages all of the bluetooth devices (RC Car). */
+    private BluetoothManager
+            btManage;
+    /** Phone's physical bluetooth Adapter. */
+    private BluetoothAdapter btAdapt;
+    /** Object* for the microcontroller. */
+>>>>>>> b43d12ec2f227983b23237fde491f1f1ada63bed
     private BluetoothDevice esp32;
     /**
      * Byte to send over bluetooth.
@@ -70,9 +83,16 @@ public class BluetoothBackground {
      * Holds the four bits for speed.
      */
     private byte currSpeed = 0;
+<<<<<<< HEAD
     /**
      * Holds the four bits for direction.
      */
+=======
+
+
+
+    /** Holds the four bits for direction. */
+>>>>>>> b43d12ec2f227983b23237fde491f1f1ada63bed
     private byte currDir = 0;
     /**
      * Value to shift the byte for direction.
@@ -113,6 +133,10 @@ public class BluetoothBackground {
             Log.e("BT", "Bluetooth not supported!");
         }
     }
+    public BluetoothBackground() {
+
+    }
+
 
     public BluetoothBackground()
     {
@@ -304,7 +328,7 @@ public class BluetoothBackground {
                 gatt.writeCharacteristic(characteristic);
             }
         } else {
-            Log.e("writeCharacteristic", "This bluetooth characteristic is not writable");
+          // Log.e("writeCharacteristic", "This bluetooth characteristic is not writable");
         }
     }
 
@@ -357,12 +381,17 @@ public class BluetoothBackground {
      * @param dir - the direction to drive the car
      * @return - byte array that will be sent to the car via bluetoothLE
      */
-    private byte[] setCarData(final byte speed, final byte dir) {
+    public byte[] setCarData(final byte speed, final byte dir) {
         this.carData = 0;
         this.carData |= (dir << shift);
         this.carData |= speed;
         return new byte[] {this.carData};
     }
+
+    public byte getCurrDir() {
+        return currDir;
+    }
+
 }
 
 
