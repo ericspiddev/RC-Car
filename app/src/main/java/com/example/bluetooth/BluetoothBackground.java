@@ -18,38 +18,57 @@ import androidx.core.app.ActivityCompat;
 import java.util.UUID;
 
 /**
- * Java.
+ * This class is responsible for running all of the backend
+ * bluetooth functionality. This includes connecting,
+ * disconnecting, sending data and reading data from a
+ * bluetooth LE device.
  */
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class BluetoothBackground { /** yrdy. */
-    private Context activityContext; /** Passed in Activity Context.*/
-    private BluetoothGatt btGatt; /** Variable to hold Gatt Server Object. */
-    private BluetoothManager
-            btManage; /** Manages all of the bluetooth devices (RC Car). */
-    private BluetoothAdapter btAdapt; /** Phone's physical bluetooth Adapter. */
-    private BluetoothDevice esp32; /** Object* for the microcontroller. */
-    private byte carData = 0; /**Byte to send over bluetooth. */
-    private final byte driveForward = 8; /** Byte value to send the car forward. */
-    private final byte driveBackward = 4; /** Byte value to send the car backward. */
-    private final byte driveLeft = 2; /** Byte value to send the left. */
-    private final byte driveRight = 1; /** Byte value to send the car right. */
-    private byte currSpeed = 0; /** Holds the four bits for speed. */
-    private byte currDir = 0; /** Holds the four bits for direction. */
-    private final int shift = 4; /** Value to shift the byte for direction. */
+public class BluetoothBackground {
+    /** Passed in Activity Context.*/
+    private final Context activityContext;
+    /** Variable to hold Gatt Server Object. */
+    private BluetoothGatt btGatt;
+    /** Manages all of the bluetooth devices (RC Car). */
+    private final BluetoothManager
+            btManage;
+    /** Phone's physical bluetooth Adapter. */
+    private final BluetoothAdapter btAdapt;
+    /** Object* for the microcontroller. */
+    private BluetoothDevice esp32;
+    /**Byte to send over bluetooth. */
+    private byte carData = 0;
+    /** Byte value to send the car forward. */
+    private final byte driveForward = 8;
+    /** Byte value to send the car backward. */
+    private final byte driveBackward = 4;
+    /** Byte value to send the left. */
+    private final byte driveLeft = 2;
+    /** Byte value to send the car right. */
+    private final byte driveRight = 1;
+    /** Holds the four bits for speed. */
+    private byte currSpeed = 0;
+    /** Holds the four bits for direction. */
+    private byte currDir = 0;
+    /** Value to shift the byte for direction. */
+    private final int shift = 4;
 
+    /** BT Service UUID.*/
     private final UUID serviceUUID =
-            UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E"); /** BT Service UUID.*/
-
+            UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E");
+    /**RX Char UUID.*/
     private final UUID rxUUID =
-        UUID.fromString("6e400002-b5a3-f393-e0a9-e50e24dcca9e"); /**RX Char UUID.*/
-    private BluetoothGattService uartBtService; /** Object to hold the uartBtService.*/
-    private BluetoothGattCharacteristic rxCharacteristic; /** Object to handle the rx BLE Char.*/
-    private String tag = "BACKGROUND"; /** Tag for logging. */
+        UUID.fromString("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
+    /** Object to hold the uartBtService.*/
+    private BluetoothGattService uartBtService;
+    /** Object to handle the rx BLE Char.*/
+    private BluetoothGattCharacteristic rxCharacteristic;
 
     /**
-     *
-     * @param c
-     * @param manager
+     * Bluetooth Background constructor that creates a background object
+     * so our main activity can bind to a bluetooth LE gatt.
+     * @param c - passed context from the
+     * @param manager - the bluetooth manager that is passed in from the activity
      */
     public BluetoothBackground(final Context c, final BluetoothManager manager) {
         this.activityContext = c;
@@ -62,7 +81,8 @@ public class BluetoothBackground { /** yrdy. */
     }
 
     /**
-     *
+     * This function is called to drive the car forward once we are
+     * connected to a car.
      */
     public void goForward() {
         currDir = driveForward;
@@ -70,7 +90,8 @@ public class BluetoothBackground { /** yrdy. */
     }
 
     /**
-     *
+     *  This function is called to drive the car backward once we are
+     *  connected to a car.
      */
     public void goBackward() {
         currDir = driveBackward;
@@ -78,7 +99,8 @@ public class BluetoothBackground { /** yrdy. */
     }
 
     /**
-     *
+     *  This function is called to drive the car left once we are
+     *  connected to a car.
      */
     public void goLeft() {
         currDir = driveLeft;
@@ -86,7 +108,8 @@ public class BluetoothBackground { /** yrdy. */
     }
 
     /**
-     *
+     * This function is called to drive the car right once we are
+     * connected to a car.
      */
     public void goRight() {
         currDir = driveRight;
@@ -94,8 +117,10 @@ public class BluetoothBackground { /** yrdy. */
     }
 
     /**
-     *
-     * @param speed
+     * This function is called when the user
+     * slides the speed slider to adjust the
+     * speed of the car.
+     * @param speed - the speed value to send to the car
      */
     public void updateSpeed(final byte speed) {
         currSpeed = speed;
@@ -105,10 +130,10 @@ public class BluetoothBackground { /** yrdy. */
     /**
      *  This function is used to set the esp32 so we can communicate over
      *  bluetooth with the esp.
-     * @param esp32 - the bluetooth device that will represent the esp32 in our code
+     * @param device - the bluetooth device that will represent the esp32 in our code
      */
-    public void setEsp32(final BluetoothDevice esp32) {
-        this.esp32 = esp32;
+    public void setEsp32(final BluetoothDevice device) {
+        this.esp32 = device;
     }
 
     /**
@@ -122,34 +147,40 @@ public class BluetoothBackground { /** yrdy. */
     }
 
     /**
-     *  The funct.
+     *  Function that calls back each time we encounter a bluetooth event
+     *  this can be a write, read, connection or disconnection.
      */
-    private BluetoothGattCallback gattCallback = new BluetoothGattCallback() {
+    private final BluetoothGattCallback gattCallback = new BluetoothGattCallback() {
         @Override
         public void onConnectionStateChange(final BluetoothGatt gatt,
                                             final int status,
                                             final int newState) {
-            String devAddr = gatt.getDevice().getAddress();
+            String address = gatt.getDevice().getAddress();
             if (status == BluetoothGatt.GATT_SUCCESS) {
                 if (newState == BluetoothProfile.STATE_CONNECTED) {
-                    Log.w("BluetoothGattCallback", "Connected to " + devAddr);
+                    Log.w("BluetoothGattCallback", "Connected to " + address);
                     btGatt = gatt;
                     if (checkBtPermission()) {
                         btGatt.discoverServices();
                     }
                 } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-                    Log.w("BluetoothGattCallback", "Disconnected from " + devAddr);
+                    Log.w("BluetoothGattCallback", "Disconnected from " + address);
                     if (checkBtPermission()) {
                         btGatt.close();
                     }
                 }
             } else {
                 Log.w("BluetoothGattCallback", "Error " + status + " encountered for device"
-                        + devAddr);
+                        + address);
             }
             super.onConnectionStateChange(gatt, status, newState);
         }
 
+        /**
+         * Callback function used for when we discover the services for a gatt
+         * @param gatt - bluetooth gatt object we checked for services on
+         * @param status - the status of our service discovery
+         */
         @Override
         public void onServicesDiscovered(final BluetoothGatt gatt, final int status) {
             Log.w("BluetoothGattCallback", "Discovered " + gatt.getServices().size()
@@ -158,12 +189,19 @@ public class BluetoothBackground { /** yrdy. */
             getServiceAndCharacteristics(gatt);
         }
 
+        /**
+         *  Callback that gets called when we do a characteristic write
+         *  this checks for successful write and logs the results
+         * @param gatt - the gatt used to get the characteristic
+         * @param characteristic - char we are writing too
+         * @param status - the status of write from the characteristic
+         */
         @Override
         public void onCharacteristicWrite(final BluetoothGatt gatt,
                                           final BluetoothGattCharacteristic characteristic,
                                           final int status) {
             if (status == BluetoothGatt.GATT_SUCCESS) {
-                Log.i("Oncharwrite", "We wrote to the characteristic "
+                Log.i("WRITE", "We wrote to the characteristic "
                         + characteristic.getUuid().toString()
                         + " "
                         + characteristic.getValue().toString());
@@ -176,30 +214,25 @@ public class BluetoothBackground { /** yrdy. */
             }
         }
 
-        @Override
-        public void onCharacteristicRead(final BluetoothGatt gatt,
-                                         final BluetoothGattCharacteristic characteristic,
-                                         final int status) {
-            if (status == BluetoothGatt.GATT_SUCCESS) {
-                Log.i(tag, "Success! Read characteristic with value of " + characteristic.getValue().toString());
-            } else if (status == BluetoothGatt.GATT_READ_NOT_PERMITTED) {
-                Log.e(tag, "Read not permitted for this uuid");
-            } else {
-                Log.e(tag, "Other error occured in char read");
-            }
-        }
-
-
     };
 
-    private void writeData(final byte[] direction) {
+    /**
+     * Writes the byte array to the bluetooth LE device.
+     * @param data - the data to be written to the bluetooth LE device
+     */
+    private void writeData(final byte[] data) {
         if (btGatt != null && rxCharacteristic != null) {
-            writeCharacteristic(btGatt, rxCharacteristic, direction);
+            writeCharacteristic(btGatt, rxCharacteristic, data);
         } else {
-            Log.e("SENDDATA", "Please connect to bluetooth device first");
+            Log.e("SEND_DATA", "Please connect to bluetooth device first");
         }
     }
 
+    /**
+     * Gets the  Uart service and RX characteristic for writing data to the
+     * bluetooth device.
+     * @param gatt - the gatt object that has our service and characteristic on it
+     */
     private void getServiceAndCharacteristics(final BluetoothGatt gatt) {
         if (gatt.getServices() == null) {
             Log.i("printGattTable", "No service or characteristics available, call "
@@ -213,16 +246,18 @@ public class BluetoothBackground { /** yrdy. */
         }
     }
 
+    /**
+     * Writes the data to the passed in characteristic.
+     * @param gatt - bluetooth gatt object that represents our connection
+     * @param characteristic - the gatt char we are writing the data to
+     * @param data - the data to be written to characteristic
+     */
     private void writeCharacteristic(final BluetoothGatt gatt,
                                      final BluetoothGattCharacteristic characteristic,
                                      final byte[] data) {
         if (isWritable(characteristic)) {
             characteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
             characteristic.setValue(data);
-            if (checkBtPermission()) {
-                Boolean test = gatt.writeCharacteristic(characteristic);
-                Log.i("DATA", "write is " + test);
-            }
 
         } else if (isWritableNoResponse(characteristic)) {
             characteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE);
@@ -232,39 +267,58 @@ public class BluetoothBackground { /** yrdy. */
             }
         } else {
             Log.e("writeCharacteristic", "This bluetooth characteristic is not writable");
-            return;
         }
     }
 
+    /**
+     * Checks to see if the characteristic is writable but does not provide a
+     * response.
+     * @param characteristic - char to be checked if it is writable
+     * @return - boolean if the characteristic is writable with no response or not
+     */
     private boolean isWritableNoResponse(final BluetoothGattCharacteristic characteristic) {
         return ((characteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE) != 0);
     }
 
+    /**
+     * Checks to see if the passed in char is writable with response.
+     * @param characteristic - char ot be checked if it is writable
+     * @return boolean if the characteristic is writable or not
+     */
     private boolean isWritable(final BluetoothGattCharacteristic characteristic) {
         return ((characteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_WRITE) != 0);
     }
 
-    private boolean isReadable(final BluetoothGattCharacteristic characteristic) {
-        return ((characteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_READ) != 0);
-    }
-
+    /**
+     * Checks to see if the current device supports
+     * bluetooth le and has it enabled.
+     * @return - bool that returns whether or bt is available/enabled
+     */
     private Boolean isBluetoothSupported() {
-        if (btAdapt != null && btAdapt.isEnabled()) {
-            return true;
-        }
-        return false;
+        return (btAdapt != null && btAdapt.isEnabled());
     }
 
+    /**
+     * Called to ensure our application has the correct
+     * permissions before executing the bluetooth commands.
+     * @return - a boolean indicating whether the app has permission or not
+     */
     private boolean checkBtPermission() {
         if (ActivityCompat.checkSelfPermission(activityContext, Manifest.permission.BLUETOOTH)
                 != PackageManager.PERMISSION_GRANTED) {
             Log.e("PERM_CHECK", "Uh oh no bluetooth permissions please allow bluetooth");
             return false;
         }
-
         return true;
     }
 
+    /**
+     * Sets the car data into a byte array with the data to
+     * send the car.
+     * @param speed - speed value to drive the car
+     * @param dir - the direction to drive the car
+     * @return - byte array that will be sent to the car via bluetoothLE
+     */
     private byte[] setCarData(final byte speed, final byte dir) {
         this.carData = 0;
         this.carData |= dir << shift;
