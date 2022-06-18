@@ -25,6 +25,7 @@
 #include <BLE2902.h>
 #include <sstream>
 #include <ESP32Servo.h>
+#include <AUnit.h>
 
 BLEServer *pServer = NULL;
 BLECharacteristic * pTxCharacteristic;
@@ -192,6 +193,7 @@ void loop() {
     // do stuff here on connecting
     oldDeviceConnected = deviceConnected;
   }
+  aunit::TestRunner::run();
 }
 
 /*
