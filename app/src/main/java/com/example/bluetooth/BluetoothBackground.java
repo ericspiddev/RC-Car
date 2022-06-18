@@ -26,14 +26,14 @@ import java.util.UUID;
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class BluetoothBackground {
     /** Passed in Activity Context.*/
-    private final Context activityContext;
+    private Context activityContext;
     /** Variable to hold Gatt Server Object. */
     private BluetoothGatt btGatt;
     /** Manages all of the bluetooth devices (RC Car). */
-    private final BluetoothManager
+    private BluetoothManager
             btManage;
     /** Phone's physical bluetooth Adapter. */
-    private final BluetoothAdapter btAdapt;
+    private BluetoothAdapter btAdapt;
     /** Object* for the microcontroller. */
     private BluetoothDevice esp32;
     /**Byte to send over bluetooth. */
@@ -48,6 +48,9 @@ public class BluetoothBackground {
     private final byte driveRight = 1;
     /** Holds the four bits for speed. */
     private byte currSpeed = 0;
+
+
+
     /** Holds the four bits for direction. */
     private byte currDir = 0;
     /** Value to shift the byte for direction. */
@@ -79,6 +82,10 @@ public class BluetoothBackground {
         }
 
     }
+    public BluetoothBackground() {
+
+    }
+
 
     /**
      * This function is called to drive the car forward once we are
@@ -266,7 +273,7 @@ public class BluetoothBackground {
                 gatt.writeCharacteristic(characteristic);
             }
         } else {
-            Log.e("writeCharacteristic", "This bluetooth characteristic is not writable");
+          // Log.e("writeCharacteristic", "This bluetooth characteristic is not writable");
         }
     }
 
@@ -319,12 +326,17 @@ public class BluetoothBackground {
      * @param dir - the direction to drive the car
      * @return - byte array that will be sent to the car via bluetoothLE
      */
-    private byte[] setCarData(final byte speed, final byte dir) {
+    public byte[] setCarData(final byte speed, final byte dir) {
         this.carData = 0;
         this.carData |= dir << shift;
         this.carData |= speed;
         return new byte[] {this.carData};
     }
+
+    public byte getCurrDir() {
+        return currDir;
+    }
+
 }
 
 
