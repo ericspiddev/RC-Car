@@ -1,7 +1,7 @@
 
 #include <AUnit.h>
 
-test(Decodding)
+test(Decoding)
 {
   uint8_t command = 0xff;
    decodeCommand(command);
