@@ -203,7 +203,11 @@ void loop() {
  * @param speedVar Used to set motor speed
  ******************************************************************************/
 void setRCDirection(int directionVar, int speedVar) {
-  if (directionVar == 0) {              // Stop
+  if (directionVar == 0) {              // Straight
+    ledcWrite(leftForwardChan, speedVar);
+    ledcWrite(rightForwardChan, speedVar);
+    ledcWrite(leftReverseChan, 0);
+    ledcWrite(rightReverseChan, 0);
   } else if (directionVar == 2) {       // Left
     ledcWrite(leftForwardChan, 0);
     ledcWrite(rightForwardChan, speedVar);
