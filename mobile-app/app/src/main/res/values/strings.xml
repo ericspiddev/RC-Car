@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Bluetooth</string>
+    <string name="bluetooth_adapter_error">Bluetooth missing or disabled</string>
+    <string name="dialog_ok">Okay</string>
+</resources>
